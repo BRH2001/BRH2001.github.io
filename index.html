@@ -17,7 +17,8 @@
       position: relative; /* Ensure body is the reference for absolute positioning */
     }
     header {
-      background-color: rgba(71, 71, 71, 0.8); /* Slightly transparent background */
+      background-color: #474747;
+      background-image: linear-gradient(-45deg, rgb(255, 255, 255) 25%, transparent 25%, transparent 75%, rgb(150, 150, 150) 75%), linear-gradient(-45deg, rgb(255, 255, 255) 25%, transparent 25%, transparent 75%, rgb(150, 150, 150) 75%);
       color: #ffffff;
       text-align: center;
       padding: 20px 0;
@@ -27,7 +28,8 @@
       z-index: 2; /* Ensure header is above other elements */
     }
     footer {
-      background-color: rgba(71, 71, 71, 0.8); /* Slightly transparent background */
+      background-color: #474747;
+      background-image: linear-gradient(45deg, rgb(255, 255, 255) 25%, transparent 25%, transparent 75%, rgb(150, 150, 150) 75%), linear-gradient(45deg, rgb(255, 255, 255) 25%, transparent 25%, transparent 75%, rgb(150, 150, 150) 75%);
       color: #ffffff;
       text-align: center;
       padding: 20px 0;
@@ -47,7 +49,7 @@
     }
     section {
       text-align: center;
-      background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+      background-color: #ffffff; /* Add background color to sections */
       padding: 20px;
       border-radius: 10px; /* Add rounded corners to sections */
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
@@ -92,38 +94,6 @@
       height: auto; /* Maintain aspect ratio */
     }
 
-    /* Angle Bars */
-    .angle-bar {
-      position: absolute;
-      width: 100px;
-      height: 100px;
-      background: linear-gradient(45deg, #ffffff 25%, transparent 25%, transparent 75%, #969696 75%),
-                  linear-gradient(-45deg, #ffffff 25%, transparent 25%, transparent 75%, #969696 75%);
-      background-size: 20px 20px;
-      background-position: 0 0, 10px 10px;
-      background-repeat: repeat;
-      z-index: 1;
-    }
-    .angle-bar.top-left {
-      top: 0;
-      left: 0;
-    }
-    .angle-bar.top-right {
-      top: 0;
-      right: 0;
-      transform: scaleX(-1);
-    }
-    .angle-bar.bottom-left {
-      bottom: 0;
-      left: 0;
-      transform: scaleY(-1);
-    }
-    .angle-bar.bottom-right {
-      bottom: 0;
-      right: 0;
-      transform: scaleX(-1) scaleY(-1);
-    }
-
     /* Adjustments for Phones */
     @media screen and (max-width: 600px) {
       header h1 {
@@ -140,9 +110,9 @@
     <section class="projects">
       <h2>Projecten</h2>
       <ul>
-        <li><a href="https://github.com/BRH2001/BRH2001.github.io/tree/main/mars_app">mars-rover app.</a></li>
-        <li><a href="https://github.com/BRH2001/BRH2001.github.io/tree/main/kenteken_app">Kenteken-checker app.</a></li>
-        <li><a href="https://github.com/BRH2001/BRH2001.github.io/tree/main/data_transfer">Data-transfer project.</a></li>
+        <li><a href="https://github.com/BRH01/BRH01.github.io/tree/main/mars_app">mars-rover app.</a></li>
+        <li><a href="https://github.com/BRH01/BRH01.github.io/tree/main/kenteken_app">Kenteken-checker app.</a></li>
+        <li><a href="https://github.com/BRH01/BRH01.github.io/tree/main/data_transfer">Data-transfer project.</a></li>
       </ul>
     </section>
     <section class="about">
@@ -154,9 +124,5 @@
     <p>&copy; Bartho Hartjes 2024</p>
   </footer>
   <img src="trinity-web.png" alt="Logo" class="logo">
-
-  <!-- Angle Bars -->
-  <div class="angle-bar top-left"></div>
-  <div class="angle-bar top-right"></div>
-  <div class="angle-bar bottom-left"></div>
-  <div class
+</body>
+</html>
