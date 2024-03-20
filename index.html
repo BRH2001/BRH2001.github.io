@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+alright i achieved the desired size of the logo. -<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -58,7 +58,10 @@
       position: relative; /* Ensure relative positioning for absolute children */
       z-index: 2; /* Ensure sections are above other elements */
     }
-    .projects:hover, .about:hover {
+    .projects:hover {
+      transform: scale(1.05); /* Increase size on hover */
+    }
+    .about:hover {
       transform: scale(1.05); /* Increase size on hover */
     }
     section h2 {
@@ -87,8 +90,8 @@
       left: 50%; /* Center horizontally */
       transform: translate(-50%, -50%); /* Center the logo */
       z-index: 1; /* Ensure logo is behind other elements */
-      max-width: 100%; /* Adjust max-width to fit container */
-      height: 100; /* Maintain aspect ratio */
+      width: 680px; /* Set the width of the logo */
+      height: auto; /* Maintain aspect ratio */
     }
 
     /* Adjustments for Phones */
