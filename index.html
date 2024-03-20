@@ -58,10 +58,7 @@
       position: relative; /* Ensure relative positioning for absolute children */
       z-index: 2; /* Ensure sections are above other elements */
     }
-    .projects:hover {
-      transform: scale(1.05); /* Increase size on hover */
-    }
-    .about:hover {
+    .projects:hover, .about:hover {
       transform: scale(1.05); /* Increase size on hover */
     }
     section h2 {
@@ -90,7 +87,7 @@
       left: 50%; /* Center horizontally */
       transform: translate(-50%, -50%); /* Center the logo */
       z-index: 1; /* Ensure logo is behind other elements */
-      width: 650px; /* Set the width of the logo */
+      max-width: 100%; /* Adjust max-width to fit container */
       height: auto; /* Maintain aspect ratio */
     }
 
