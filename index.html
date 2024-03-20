@@ -49,7 +49,7 @@
     }
     section {
       text-align: center;
-      background-color: rgba(255, 255, 255, 0.7); /* White with 70% opacity */
+      background-color: #ffffff; /* White background */
       padding: 20px;
       border-radius: 10px; /* Add rounded corners to sections */
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
@@ -87,10 +87,11 @@
     }
     .logo {
       position: absolute; /* Position logo absolutely */
-      top: 10px; /* Adjust top position */
-      left: 10px; /* Adjust left position */
+      top: 50%; /* Center vertically */
+      left: 50%; /* Center horizontally */
+      transform: translate(-50%, -50%); /* Center the logo */
       z-index: 1; /* Ensure logo is behind other elements */
-      width: 150px; /* Set the width of the logo */
+      width: 680px; /* Set the width of the logo */
       height: auto; /* Maintain aspect ratio */
     }
 
@@ -106,14 +107,13 @@
   <header>
     <h1>Welkom bij mijn portfolio!</h1>
   </header>
-  <img src="trinity-web.png" alt="Logo" class="logo">
   <div class="container">
     <section class="projects">
       <h2>Projecten</h2>
       <ul>
-        <li><a href="https://github.com/BRH01/BRH01.github.io/tree/main/mars_app">mars-rover app.</a></li>
-        <li><a href="https://github.com/BRH01/BRH01.github.io/tree/main/kenteken_app">Kenteken-checker app.</a></li>
-        <li><a href="https://github.com/BRH01/BRH01.github.io/tree/main/data_transfer">Data-transfer project.</a></li>
+        <li><a href="https://github.com/BRH2001/BRH2001.github.io/tree/main/mars_app">mars-rover app.</a></li>
+        <li><a href="https://github.com/BRH2001/BRH2001.github.io/tree/main/kenteken_app">Kenteken-checker app.</a></li>
+        <li><a href="https://github.com/BRH2001/BRH2001.github.io/tree/main/data_transfer">Data-transfer project.</a></li>
       </ul>
     </section>
     <section class="about">
@@ -124,5 +124,6 @@
   <footer>
     <p>&copy; Bartho Hartjes 2024</p>
   </footer>
+  <img src="trinity-web.png" alt="Logo" class="logo">
 </body>
 </html>
