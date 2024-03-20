@@ -1,0 +1,5 @@
+er zijn nog wat aanpassingen nodig aan het laatste deel van het process. 
+alles is functioneel.
+alleen bij de laatste stap, waar pc3 bestanden moet sturen naar pc1, moet nog de decryptie functie in het ontvangersprogramma geimplementeerd worden.
+Dan de pdf functie en qr functie reintegreren.
+als dit klaar is, is het project af.
