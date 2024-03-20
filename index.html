@@ -17,7 +17,7 @@
       position: relative; /* Ensure body is the reference for absolute positioning */
     }
     header {
-      background-color: rgba(71, 71, 71, 0.8); /* Slightly transparent background */
+      background-color: rgba(71, 71, 71, 0.5); /* Slightly transparent background */
       color: #ffffff;
       text-align: center;
       padding: 20px 0;
@@ -48,7 +48,7 @@
     }
     section {
       text-align: center;
-      background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+      background-color: rgba(255, 255, 255, 0.7); /* Slightly transparent background */
       padding: 20px;
       border-radius: 10px; /* Add rounded corners to sections */
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
@@ -95,8 +95,14 @@
 
     /* Adjustments for Phones */
     @media screen and (max-width: 600px) {
-      header h1 {
-        font-size: 19px; /* Reduce font size for phones */
+      header {
+        background-color: rgba(71, 71, 71, 0.5); /* Slightly transparent background */
+      }
+      section {
+        background-color: rgba(255, 255, 255, 0.7); /* Slightly transparent background */
+      }
+      .logo {
+        width: 340px; /* Halve the width of the logo for phones */
       }
     }
   </style>
