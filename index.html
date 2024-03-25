@@ -10,7 +10,7 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #474747; /* Set background color to purple */
+      background-color: #474747; /* Set background color to dark gray */
       min-height: 100vh; /* Ensure page takes at least full viewport height */
       display: flex;
       flex-direction: column;
@@ -18,26 +18,14 @@
       align-items: center; /* Center horizontally */
       position: relative; /* Ensure body is the reference for absolute positioning */
     }
-    header {
+    header, footer {
       background-color: #474747;
-      background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 75%, rgba(150, 150, 150, 0.5) 75%), linear-gradient(-45deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 75%, rgba(150, 150, 150, 0.5) 75%);
       color: #ffffff;
       text-align: center;
       padding: 20px 0;
-      flex-shrink: 0; /* Prevent header from shrinking */
-      font-size: 16px; /* Default font size for header */
+      flex-shrink: 0; /* Prevent header and footer from shrinking */
       position: relative; /* Ensure relative positioning for absolute children */
-      z-index: 2; /* Ensure header is above other elements */
-    }
-    footer {
-      background-color: #474747;
-      background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 75%, rgba(150, 150, 150, 0.5) 75%), linear-gradient(45deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 75%, rgba(150, 150, 150, 0.5) 75%);
-      color: #ffffff;
-      text-align: center;
-      padding: 20px 0;
-      flex-shrink: 0; /* Prevent footer from shrinking */
-      position: relative; /* Ensure relative positioning for absolute children */
-      z-index: 2; /* Ensure footer is above other elements */
+      z-index: 2; /* Ensure header and footer are above other elements */
     }
     .container {
       max-width: 800px;
@@ -122,14 +110,6 @@
       </ul>
     </section>
     <section class="about">
-      <h2>Over mij</h2>
-      <p>Ik ben 23 en studeer aan het rea college in Groningen om een ervaren applicatie ontwikkelaar te worden. Deze site laat wat van mijn projecten zien.</p>
-    </section>
-  </div>
-  <footer>
-    <p>&copy; Bartho Hartjes 2024</p>
-  </footer>
-  <div class="about">
       <h2>Over mij</h2>
       <p>Ik ben 23 en studeer aan het rea college in Groningen om een ervaren applicatie ontwikkelaar te worden. Deze site laat wat van mijn projecten zien.</p>
     </section>
