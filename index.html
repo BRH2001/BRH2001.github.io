@@ -10,22 +10,32 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #474747; /* Set background color to dark gray */
+      background-color: #474747; /* Set background color to purple */
       min-height: 100vh; /* Ensure page takes at least full viewport height */
       display: flex;
       flex-direction: column;
-      justify-content: center; /* Center vertically */
-      align-items: center; /* Center horizontally */
       position: relative; /* Ensure body is the reference for absolute positioning */
     }
-    header, footer {
+    header {
       background-color: #474747;
+      background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 75%, rgba(150, 150, 150, 0.5) 75%), linear-gradient(-45deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 75%, rgba(150, 150, 150, 0.5) 75%);
       color: #ffffff;
       text-align: center;
       padding: 20px 0;
-      flex-shrink: 0; /* Prevent header and footer from shrinking */
+      flex-shrink: 0; /* Prevent header from shrinking */
+      font-size: 16px; /* Default font size for header */
       position: relative; /* Ensure relative positioning for absolute children */
-      z-index: 2; /* Ensure header and footer are above other elements */
+      z-index: 2; /* Ensure header is above other elements */
+    }
+    footer {
+      background-color: #474747;
+      background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 75%, rgba(150, 150, 150, 0.5) 75%), linear-gradient(45deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 75%, rgba(150, 150, 150, 0.5) 75%);
+      color: #ffffff;
+      text-align: center;
+      padding: 20px 0;
+      flex-shrink: 0; /* Prevent footer from shrinking */
+      position: relative; /* Ensure relative positioning for absolute children */
+      z-index: 2; /* Ensure footer is above other elements */
     }
     .container {
       max-width: 800px;
@@ -78,9 +88,8 @@
       top: 50%; /* Center vertically */
       left: 50%; /* Center horizontally */
       transform: translate(-50%, -50%); /* Center the logo */
-      z-index: 1; /* Ensure logo is behind other elements */
-      width: 40%; /* Set the width of the logo */
-      max-width: 400px; /* Set max-width for responsiveness */
+      z-index: 1; /* Ensure logo is behind other  elements */
+      width: 680px; /* Set the width of the logo */
       height: auto; /* Maintain aspect ratio */
     }
 
@@ -94,21 +103,25 @@
     .top-left {
       top: 0;
       left: 0;
+      clip-path: polygon(0 0, 100% 0, 0 100%);
       background-color: #ffffff; /* White color for top left rectangle */
     }
     .top-right {
       top: 0;
       right: 0;
+      clip-path: polygon(100% 0, 0 0, 100% 100%);
       background-color: #474747; /* Dark gray color for top right rectangle */
     }
     .bottom-left {
       bottom: 0;
       left: 0;
+      clip-path: polygon(0 100%, 100% 100%, 0 0);
       background-color: #474747; /* Dark gray color for bottom left rectangle */
     }
     .bottom-right {
       bottom: 0;
       right: 0;
+      clip-path: polygon(100% 100%, 0 100%, 100% 0);
       background-color: #ffffff; /* White color for bottom right rectangle */
     }
 
@@ -116,10 +129,6 @@
     @media screen and (max-width: 600px) {
       header h1 {
         font-size: 19px; /* Reduce font size for phones */
-      }
-      .logo {
-        width: 80%; /* Reduce width for smaller screens */
-        max-width: 250px; /* Set max-width for smaller screens */
       }
     }
   </style>
