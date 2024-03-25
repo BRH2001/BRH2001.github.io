@@ -14,11 +14,13 @@
       min-height: 100vh; /* Ensure page takes at least full viewport height */
       display: flex;
       flex-direction: column;
+      justify-content: center; /* Center vertically */
+      align-items: center; /* Center horizontally */
       position: relative; /* Ensure body is the reference for absolute positioning */
     }
     header {
       background-color: #474747;
-      background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.6) 25%, transparent 25%, transparent 75%, rgba(150, 150, 150, 0.6) 75%), linear-gradient(-45deg, rgba(255, 255, 255, 0.6) 25%, transparent 25%, transparent 75%, rgba(150, 150, 150, 0.6) 75%);
+      background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 75%, rgba(150, 150, 150, 0.5) 75%), linear-gradient(-45deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 75%, rgba(150, 150, 150, 0.5) 75%);
       color: #ffffff;
       text-align: center;
       padding: 20px 0;
@@ -29,7 +31,7 @@
     }
     footer {
       background-color: #474747;
-      background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.6) 25%, transparent 25%, transparent 75%, rgba(150, 150, 150, 0.6) 75%), linear-gradient(45deg, rgba(255, 255, 255, 0.6) 25%, transparent 25%, transparent 75%, rgba(150, 150, 150, 0.6) 75%);
+      background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 75%, rgba(150, 150, 150, 0.5) 75%), linear-gradient(45deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 75%, rgba(150, 150, 150, 0.5) 75%);
       color: #ffffff;
       text-align: center;
       padding: 20px 0;
@@ -49,7 +51,7 @@
     }
     section {
       text-align: center;
-      background-color: rgba(255, 255, 255, 0.8); /* White background with slight transparency */
+      background-color: rgba(0, 0, 0, 0.5); /* Black background with 0.5 transparency */
       padding: 20px;
       border-radius: 10px; /* Add rounded corners to sections */
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
@@ -57,17 +59,17 @@
       transition: transform 0.2s; /* Smooth transition for size change */
       position: relative; /* Ensure relative positioning for absolute children */
       z-index: 2; /* Ensure sections are above other elements */
-      color: #474747; /* Black text color */
+      color: #ffffff; /* White text color */
     }
     .projects:hover,
     .about:hover {
       transform: scale(1.05); /* Increase size on hover */
     }
     section h2 {
-      color: #474747; /* Change section heading color */
+      color: #ffffff; /* Change section heading color */
     }
     section p {
-      color: #474747; /* Change paragraph color */
+      color: #ffffff; /* Change paragraph color */
     }
     section ul {
       list-style-type: none; /* Remove default list style */
@@ -89,7 +91,7 @@
       left: 50%; /* Center horizontally */
       transform: translate(-50%, -50%); /* Center the logo */
       z-index: 1; /* Ensure logo is behind other elements */
-      width: 50%; /* Set the width of the logo */
+      width: 40%; /* Set the width of the logo */
       max-width: 400px; /* Set max-width for responsiveness */
       height: auto; /* Maintain aspect ratio */
     }
@@ -120,6 +122,14 @@
       </ul>
     </section>
     <section class="about">
+      <h2>Over mij</h2>
+      <p>Ik ben 23 en studeer aan het rea college in Groningen om een ervaren applicatie ontwikkelaar te worden. Deze site laat wat van mijn projecten zien.</p>
+    </section>
+  </div>
+  <footer>
+    <p>&copy; Bartho Hartjes 2024</p>
+  </footer>
+  <div class="about">
       <h2>Over mij</h2>
       <p>Ik ben 23 en studeer aan het rea college in Groningen om een ervaren applicatie ontwikkelaar te worden. Deze site laat wat van mijn projecten zien.</p>
     </section>
