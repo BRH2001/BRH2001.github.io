@@ -18,7 +18,7 @@
     }
     header {
       background-color: #474747;
-      background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 75%, rgba(150, 150, 150, 0.5) 75%), linear-gradient(-45deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 75%, rgba(150, 150, 150, 0.5) 75%);
+      background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.6) 25%, transparent 25%, transparent 75%, rgba(150, 150, 150, 0.6) 75%), linear-gradient(-45deg, rgba(255, 255, 255, 0.6) 25%, transparent 25%, transparent 75%, rgba(150, 150, 150, 0.6) 75%);
       color: #ffffff;
       text-align: center;
       padding: 20px 0;
@@ -29,7 +29,7 @@
     }
     footer {
       background-color: #474747;
-      background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 75%, rgba(150, 150, 150, 0.5) 75%), linear-gradient(45deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 75%, rgba(150, 150, 150, 0.5) 75%);
+      background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.6) 25%, transparent 25%, transparent 75%, rgba(150, 150, 150, 0.6) 75%), linear-gradient(45deg, rgba(255, 255, 255, 0.6) 25%, transparent 25%, transparent 75%, rgba(150, 150, 150, 0.6) 75%);
       color: #ffffff;
       text-align: center;
       padding: 20px 0;
@@ -49,7 +49,7 @@
     }
     section {
       text-align: center;
-      background-color: #000000; /* Black background */
+      background-color: rgba(255, 255, 255, 0.8); /* White background with slight transparency */
       padding: 20px;
       border-radius: 10px; /* Add rounded corners to sections */
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
@@ -57,17 +57,17 @@
       transition: transform 0.2s; /* Smooth transition for size change */
       position: relative; /* Ensure relative positioning for absolute children */
       z-index: 2; /* Ensure sections are above other elements */
-      color: #ffffff; /* White text color */
+      color: #474747; /* Black text color */
     }
     .projects:hover,
     .about:hover {
       transform: scale(1.05); /* Increase size on hover */
     }
     section h2 {
-      color: #ffffff; /* Change section heading color */
+      color: #474747; /* Change section heading color */
     }
     section p {
-      color: #ffffff; /* Change paragraph color */
+      color: #474747; /* Change paragraph color */
     }
     section ul {
       list-style-type: none; /* Remove default list style */
@@ -100,7 +100,7 @@
         font-size: 19px; /* Reduce font size for phones */
       }
       .logo {
-        width:         80%; /* Reduce width for smaller screens */
+        width: 80%; /* Reduce width for smaller screens */
         max-width: 250px; /* Set max-width for smaller screens */
       }
     }
@@ -127,8 +127,6 @@
   <footer>
     <p>&copy; Bartho Hartjes 2024</p>
   </footer>
-  <div class="logo">
-    <img src="trinity-web.png" alt="Logo">
-  </div>
+  <img src="trinity-web.png" alt="Logo" class="logo">
 </body>
 </html>
