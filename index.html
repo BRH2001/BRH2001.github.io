@@ -49,7 +49,7 @@
     }
     section {
       text-align: center;
-      background-color: rgba(255, 255, 255, 0.5); /* White background with slight transparency */
+      background-color: #000000; /* Black background */
       padding: 20px;
       border-radius: 10px; /* Add rounded corners to sections */
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
@@ -57,17 +57,17 @@
       transition: transform 0.2s; /* Smooth transition for size change */
       position: relative; /* Ensure relative positioning for absolute children */
       z-index: 2; /* Ensure sections are above other elements */
-      color: #474747; /* Black text color */
+      color: #ffffff; /* White text color */
     }
     .projects:hover,
     .about:hover {
       transform: scale(1.05); /* Increase size on hover */
     }
     section h2 {
-      color: #474747; /* Change section heading color */
+      color: #ffffff; /* Change section heading color */
     }
     section p {
-      color: #474747; /* Change paragraph color */
+      color: #ffffff; /* Change paragraph color */
     }
     section ul {
       list-style-type: none; /* Remove default list style */
@@ -100,14 +100,9 @@
         font-size: 19px; /* Reduce font size for phones */
       }
       .logo {
-        width: 80%; /* Reduce width for smaller screens */
+        width:         80%; /* Reduce width for smaller screens */
         max-width: 250px; /* Set max-width for smaller screens */
       }
-    }
-
-    /* Hover Animation for White Text Bubbles */
-    section:hover {
-      background-color: rgba(255, 255, 255, 0.8); /* Increase opacity on hover */
     }
   </style>
 </head>
@@ -137,4 +132,3 @@
   </div>
 </body>
 </html>
-
