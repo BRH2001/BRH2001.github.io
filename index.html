@@ -106,17 +106,8 @@ section ul li a:hover {
   clip-path: polygon(0 0, calc(100% - 1px) 0, 0 calc(100% - 1px)); /* Adjusted clip-path to remove small white triangle */
   background-color: #000000; /* Black color for top left rectangle */
 }
-.top-right {
-  top: 0;
-  right: 0;
-  clip-path: polygon(100% 0, 0 0, 100% 100%);
-  background: linear-gradient(45deg, rgba(0, 0, 0, 0.6) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.5) 75%);
-}
-.bottom-left {
-  bottom: 0;
-  left: 0;
-  clip-path: polygon(0 100%, 100% 100%, 0 0);
-  background: linear-gradient(-45deg, rgba(0, 0, 0, 0.6) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.5) 75%);
+.bottom-left, .top-right {
+  background-color: #000000; /* Black color for rectangles */
 }
 .bottom-right {
   bottom: 0;
