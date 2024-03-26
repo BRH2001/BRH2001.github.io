@@ -16,19 +16,27 @@ body {
   flex-direction: column;
   position: relative; /* Ensure body is the reference for absolute positioning */
 }
-
-header, footer {
+header {
   background-color: #474747;
-  background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.6) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.5) 75%);
+  background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.6) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0) 100%), linear-gradient(-45deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.5) 75%);
   color: #ffffff;
   text-align: center;
   padding: 20px 0;
-  flex-shrink: 0; /* Prevent header and footer from shrinking */
-  font-size: 16px; /* Default font size for header and footer */
+  flex-shrink: 0; /* Prevent header from shrinking */
+  font-size: 16px; /* Default font size for header */
   position: relative; /* Ensure relative positioning for absolute children */
-  z-index: 2; /* Ensure header and footer are above other elements */
+  z-index: 2; /* Ensure header is above other elements */
 }
-
+footer {
+  background-color: #474747;
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.6) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0) 100%), linear-gradient(45deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.5) 75%);
+  color: #ffffff;
+  text-align: center;
+  padding: 20px 0;
+  flex-shrink: 0; /* Prevent footer from shrinking */
+  position: relative; /* Ensure relative positioning for absolute children */
+  z-index: 2; /* Ensure footer is above other elements */
+}
 .container {
   max-width: 800px;
   margin: auto;
@@ -39,7 +47,6 @@ header, footer {
   position: relative; /* Ensure relative positioning for absolute children */
   z-index: 2; /* Ensure container is above other elements */
 }
-
 section {
   text-align: center;
   background-color: rgba(0, 0, 0, 0.6); /* Black background with 0.5 transparency */
@@ -52,33 +59,30 @@ section {
   z-index: 2; /* Ensure sections are above other elements */
   color: #ffffff; /* White text color */
 }
-
-.projects:hover, .about:hover {
+.projects:hover,
+.about:hover {
   transform: scale(1.05); /* Increase size on hover */
 }
-
-section h2, section p {
-  color: #ffffff; /* Change section heading and paragraph color */
+section h2 {
+  color: #ffffff; /* Change section heading color */
 }
-
+section p {
+  color: #ffffff; /* Change paragraph color */
+}
 section ul {
   list-style-type: none; /* Remove default list style */
   padding: 0;
 }
-
 section ul li {
   margin-bottom: 10px;
 }
-
 section ul li a {
   color: #3498db; /* Change link color */
   text-decoration: none; /* Remove underline */
 }
-
 section ul li a:hover {
   text-decoration: underline; /* Add underline on hover */
 }
-
 .logo {
   position: absolute; /* Position logo absolutely */
   top: 50%; /* Center vertically */
@@ -96,18 +100,29 @@ section ul li a:hover {
   height: 100px;
   z-index: 1; /* Ensure rectangles are behind other elements */
 }
-
-.top-left, .bottom-right {
-  background-color: #000000; /* Black color for top left and bottom right rectangle */
+.top-left {
+  top: 0;
+  left: 0;
+  clip-path: polygon(0 0, calc(100% - 1px) 0, 0 calc(100% - 1px)); /* Adjusted clip-path to remove small white triangle */
+  background-color: #000000; /* Black color for top left rectangle */
 }
-
-.top-right, .bottom-left {
-  background-color: #ffffff; /* White color for top right and bottom left rectangle */
+.top-right {
+  top: 0;
+  right: 0;
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.6) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.5) 75%);
 }
-
-.top-left, .top-right, .bottom-left, .bottom-right {
-  clip-path: polygon(0 0, 100% 0, 0 100%); /* Clip path to create triangular cut */
-  background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.6) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.5) 75%);
+.bottom-left {
+  bottom: 0;
+  left: 0;
+  clip-path: polygon(0 100%, 100% 100%, 0 0);
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.6) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.5) 75%);
+}
+.bottom-right {
+  bottom: 0;
+  right: 0;
+  clip-path: polygon(100% 100%, 0 100%, 100% 0);
+  background-color: #ffffff; /* White color for bottom right rectangle */
 }
 /* Adjustments for Phones */
 @media screen and (max-width: 500px) {
