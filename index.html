@@ -93,37 +93,41 @@
       height: auto; /* Maintain aspect ratio */
     }
 
-    /* Corner Triangular Cut Rectangles */
-    .corner-rectangle {
-      position: absolute;
-      width: 100px;
-      height: 100px;
-      z-index: 1; /* Ensure rectangles are behind other elements */
-    }
-    .top-left {
-      top: 0;
-      left: 0;
-      clip-path: polygon(0 0, calc(100% - 1px) 0, 0 calc(100% - 1px)); /* Adjusted clip-path to remove small white triangle */
-      background-color: #000000; /* Black color for top left rectangle */
-    }
-    .top-right {
-      top: 0;
-      right: 0;
-      clip-path: polygon(100% 0, 0 0, 100% 100%);
-      background-color: #ffffff; /* White color for top right rectangle */
-    }
-    .bottom-left {
-      bottom: 0;
-      left: 0;
-      clip-path: polygon(0 100%, 100% 100%, 0 0);
-      background-color: #ffffff; /* White color for bottom left rectangle */
-    }
-    .bottom-right {
-      bottom: 0;
-      right: 0;
-      clip-path: polygon(100% 100%, 0 100%, 100% 0);
-      background-color: #000000; /* Black color for bottom right rectangle */
-    }
+   /* Corner Triangular Cut Rectangles */
+.top-left,
+.top-right,
+.bottom-left,
+.bottom-right {
+  position: fixed; /* Change to fixed positioning */
+  width: 100px;
+  height: 100px;
+  z-index: 1; /* Ensure rectangles are behind other elements */
+}
+
+.top-left {
+  top: 0;
+  left: 0;
+  clip-path: polygon(0 0, calc(100% - 1px) 0, 0 calc(100% - 1px)); /* Adjusted clip-path to remove small white triangle */
+  background-color: #000000; /* Black color for top left rectangle */
+}
+.top-right {
+  top: 0;
+  right: 0;
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+  background-color: #ffffff; /* White color for top right rectangle */
+}
+.bottom-left {
+  bottom: 0;
+  left: 0;
+  clip-path: polygon(0 100%, 100% 100%, 0 0);
+  background-color: #ffffff; /* White color for bottom left rectangle */
+}
+.bottom-right {
+  bottom: 0;
+  right: 0;
+  clip-path: polygon(100% 100%, 0 100%, 100% 0);
+  background-color: #000000; /* Black color for bottom right rectangle */
+}
 
     /* Adjustments for Phones */
     @media screen and (max-width: 600px) {
