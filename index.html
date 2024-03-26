@@ -18,7 +18,7 @@
     }
     header {
       background-color: #474747;
-      background-image: linear-gradient(-45deg, rgba(0, 0, 0, 0.6) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.5) 75%), linear-gradient(-45deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.5) 75%);
+      background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.6) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.5) 75%), linear-gradient(-45deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.5) 75%);
       color: #ffffff;
       text-align: center;
       padding: 20px 0;
@@ -29,7 +29,7 @@
     }
     footer {
       background-color: #474747;
-      background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.6) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.5) 75%), linear-gradient(45deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.5) 75%);
+      background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.6) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.5) 75%), linear-gradient(45deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.5) 75%);
       color: #ffffff;
       text-align: center;
       padding: 20px 0;
@@ -85,11 +85,11 @@
     }
     .logo {
       position: absolute; /* Position logo absolutely */
-      top: 10px; /* Adjusted top position */
+      top: 50%; /* Center vertically */
       left: 50%; /* Center horizontally */
-      transform: translateX(-50%); /* Center the logo */
-      z-index: 3; /* Ensure logo is above other elements */
-      width: 200px; /* Set the width of the logo */
+      transform: translate(-50%, -50%); /* Center the logo */
+      z-index: 1; /* Ensure logo is behind other elements */
+      width: 680px; /* Set the width of the logo */
       height: auto; /* Maintain aspect ratio */
     }
 
@@ -125,15 +125,12 @@
       background-color: #000000; /* Black color for bottom right rectangle */
     }
 
-/* Adjustments for Phones */
-@media screen and (max-width: 600px) {
-  header h1 {
-    font-size: 19px; /* Reduce font size for phones */
-  }
-  .logo {
-    width: 150px; /* Reduce logo size for phones */
-  }
-}
+    /* Adjustments for Phones */
+    @media screen and (max-width: 600px) {
+      header h1 {
+        font-size: 19px; /* Reduce font size for phones */
+      }
+    }
   </style>
 </head>
 <body>
@@ -147,22 +144,19 @@
         <li><a href="https://github.com/BRH2001/BRH2001.github.io/tree/main/mars_app">mars-rover app.</a></li>
         <li><a href="https://github.com/BRH2001/BRH2001.github.io/tree/main/kenteken_app">kenteken-checker app.</a></li>
         <li><a href="https://github.com/BRH2001/BRH2001.github.io/tree/main/data_transfer">Data-transfer project.</a></li>
-        </ul>
-      </section>
-      <section class="about">
-        <h2>Over mij</h2>
-        <p>Ik ben 23 en studeer aan het rea college in Groningen om een ervaren applicatie ontwikkelaar te worden. Deze site laat wat van mijn projecten zien.</p>
-      </section>
-    </div>
-    <footer>
-      <p>&copy; Bartho Hartjes 2024</p>
-    </footer>
-    <!-- Corner Triangular Cut Rectangles -->
-    <div class="corner-rectangle top-left"></div>
-    <div class="corner-rectangle top-right"></div>
-    <div class="corner-rectangle bottom-left"></div>
-    <div class="corner-rectangle bottom-right"></div>
-    <img src="trinity-web.png" alt="Logo" class="logo">
-  </body>
-  </html>
-  
+      </ul>
+    </section>
+    <section class="about">
+      <h2>Over mij</h2>
+      <p>Ik ben 23 en studeer aan het rea college in Groningen om een ervaren applicatie ontwikkelaar te worden. Deze site laat wat van mijn projecten zien.</p>
+    </section>
+  </div>
+  <footer>
+    <p>&copy; Bartho Hartjes 2024</p>
+  </footer>
+  <!-- Corner Triangular Cut Rectangles -->
+  <!-- Remove the unnecessary div elements -->
+  <img src="trinity-web.png" alt="Logo" class="logo">
+</body>
+</html>
+
