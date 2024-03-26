@@ -71,5 +71,5 @@ Acknowledgments
 
     Special thanks to RDW for providing access to their database, enabling users to retrieve vehicle information easily.
 
-Feel free to reach out with any questions or feedback! Happy exploring vehicles! 🚗🔍
+Feel free to reach out with any questions or feedback! enjoy researching vehicles! 🚗🔍
 --------------------------------------------------------------------------------------------------------------------------------

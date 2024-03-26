@@ -81,5 +81,5 @@ Acknowledgments
 
     Special thanks to NASA for providing the Mars Rover Photo API, enabling enthusiasts to explore the wonders of Mars from the comfort of their screens.
 
-Feel free to reach out with any questions or feedback! Happy exploring Mars! 🚀🔭
+Feel free to reach out with any questions or feedback! have fun exploring Mars! 🚀🔭
 --------------------------------------------------------------------------------------------------------------------------------
