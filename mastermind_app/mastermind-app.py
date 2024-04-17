@@ -27,13 +27,13 @@ class MastermindGame:
         self.root.title("Mastermind")
         self.root.configure(bg=DARK_GREY)
 
-        # Center the window on the screen
-        window_width = 4 * COLUMN_SIZE + 200
-        window_height = MAX_ATTEMPTS * ROW_SIZE + 200
+        # Set the initial window size and position
+        window_width = 4 * COLUMN_SIZE + 1055
+        window_height = MAX_ATTEMPTS * ROW_SIZE + 333
         screen_width = root.winfo_screenwidth()
         screen_height = root.winfo_screenheight()
-        x_coordinate = (screen_width - window_width) // 2
-        y_coordinate = (screen_height - window_height) // 2
+        x_coordinate = (screen_width - window_width) // 1
+        y_coordinate = (screen_height - window_height) // 9
         self.root.geometry(f"{window_width}x{window_height}+{x_coordinate}+{y_coordinate}")
 
         self.create_board()
