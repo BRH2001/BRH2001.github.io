@@ -32,7 +32,7 @@ class MastermindGame:
         window_height = MAX_ATTEMPTS * ROW_SIZE + 333
         screen_width = root.winfo_screenwidth()
         screen_height = root.winfo_screenheight()
-        x_coordinate = (screen_width - window_width) // 1
+        x_coordinate = (screen_width - window_width) // 9
         y_coordinate = (screen_height - window_height) // 9
         self.root.geometry(f"{window_width}x{window_height}+{x_coordinate}+{y_coordinate}")
 
@@ -159,7 +159,7 @@ class MastermindGame:
         self.points_label.config(text=f"Points: {self.points}")
 
         if exact_matches == CODE_LENGTH:
-            self.end_game("You win.")
+            self.end_game("You win!")
         elif self.attempts_left == 0:
             self.end_game("You lose.")
 
@@ -172,7 +172,7 @@ class MastermindGame:
 
     def end_game(self, message):
         # Adjust the x-coordinate to change the horizontal position
-        end_message = tk.Label(self.root, text=message, bg=DARK_GREY, fg=BLACK, font=("Helvetica", 12))
+        end_message = tk.Label(self.root, text=message, bg=BLACK, fg=RED, font=("Helvetica", 16))
         end_message.place(relx=0.5, rely=1.0, anchor=tk.CENTER, y=-40)
 
 root = tk.Tk()
