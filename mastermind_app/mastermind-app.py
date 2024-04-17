@@ -140,15 +140,13 @@ class MastermindGame:
         feedback_widgets = self.feedback_rows[self.current_row_index].winfo_children()
         feedback = []
 
-        for i in range(exact_matches):
-            feedback.append(RED)
-
-        for i in range(color_matches):
-            feedback.append(WHITE)
-
-        # Fill the remaining slots with black
-        remaining = CODE_LENGTH - len(feedback)
-        feedback.extend([BLACK] * remaining)
+        for i in range(CODE_LENGTH):
+            if i in guess_matched_indices:
+                feedback.append(RED)
+            elif guess[i] in self.secret_code and guess[i] != self.secret_code[i]:
+                feedback.append(WHITE)
+            else:
+                feedback.append(BLACK)
 
         for i, color in enumerate(feedback):
             canvas = feedback_widgets[i]
@@ -167,6 +165,7 @@ class MastermindGame:
 
         self.current_row_index += 1
         self.chosen_colors = []
+
 
     def draw_circle(self, canvas, x, y, r, **kwargs):
         return canvas.create_oval(x - r, y - r, x + r, y + r, **kwargs)
