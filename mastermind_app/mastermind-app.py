@@ -14,6 +14,7 @@ COLUMN_SIZE = 50
 DOT_RADIUS = 5
 MAX_ATTEMPTS = 12
 INITIAL_POINTS = 13
+GUESS_TIMEOUT = 6  # Time limit for each guess in seconds
 
 class MastermindGame:
     def __init__(self, root, code_length=4):
@@ -22,6 +23,7 @@ class MastermindGame:
         self.secret_code = random.sample(self.colors_4 if code_length == 4 else self.colors_6, k=code_length)
         self.points = INITIAL_POINTS
         self.attempts_left = MAX_ATTEMPTS
+        self.game_over = False
 
         self.root = root
         self.root.title("Mastermind")
@@ -52,8 +54,42 @@ class MastermindGame:
 
         # Display initial points
         self.points_label = tk.Label(self.root, text=f"Points: {self.points}", bg=BLACK, fg=WHITE)
-        self.points_label.place(x=48 // 0.6, y=root.winfo_screenheight() - 190)
+        self.points_label.place(x=48 // 0.6, y=root.winfo_screenheight() - 212)
         self.create_color_palette()
+
+        # Initialize timer variables based on code_length
+        if code_length == 4:
+            self.timer_label = tk.Label(self.root, text="", bg=DARK_GREY, fg=WHITE, font=("Helvetica", 16))
+            self.timer_label.place(relx=0.3, rely=0.95, anchor=tk.CENTER)
+            self.remaining_time = GUESS_TIMEOUT
+        elif code_length == 6:
+            self.timer_label = tk.Label(self.root, text="", bg=DARK_GREY, fg=WHITE, font=("Helvetica", 16))
+            self.timer_label.place(relx=0.22, rely=0.95, anchor=tk.CENTER)  # Adjust position for 6-color mode
+            self.remaining_time = 9  # Set timer to 9 seconds for 6-color mode
+        else:
+            raise ValueError("Invalid code length")
+
+        self.timer_running = False
+        self.start_timer()
+
+    def start_timer(self):
+        if not self.timer_running:
+            self.timer_running = True
+            self.update_timer()
+
+    def update_timer(self):
+        self.timer_label.config(text=f"Time left: {self.remaining_time}")
+        if self.remaining_time > 0 and not self.game_over:
+            self.remaining_time -= 1
+            self.root.after(1000, self.update_timer)
+        elif not self.game_over:
+            self.end_game("You lose.")
+
+    def reset_timer(self):
+        if len(self.secret_code) == 6:
+            self.remaining_time = 9  # Reset timer to 9 seconds for 6-color mode
+        else:
+            self.remaining_time = GUESS_TIMEOUT  # Reset timer to default value for 4-color mode
 
     def create_board(self, code_length):
         self.board_frame = tk.Frame(self.root, bg=BLACK)
@@ -97,7 +133,7 @@ class MastermindGame:
             color_button.pack(side=tk.LEFT, padx=0)
 
     def on_color_click(self, color):
-        if self.attempts_left > 0:
+        if self.attempts_left > 0 and not self.game_over:
             row_index = self.current_row_index
             if len(self.chosen_colors) < len(self.secret_code):
                 if color not in self.chosen_colors:
@@ -115,6 +151,7 @@ class MastermindGame:
                     pass
 
     def evaluate_guess(self):
+        self.reset_timer()  # Reset timer after each guess
         guess = [widget["bg"] for widget in self.rows[self.current_row_index].winfo_children()]
         print("Guess:", guess)
         print("Secret code:", self.secret_code)
@@ -165,9 +202,11 @@ class MastermindGame:
         self.points_label.config(text=f"Points: {self.points}")
 
         if exact_matches == len(self.secret_code):
-            self.end_game("You win!")
+            self.game_over = True
+            self.end_game("YOU WIN!")
         elif self.attempts_left == 0:
-            self.end_game("You lose.")
+            self.game_over = True
+            self.end_game("YOU LOSE.")
 
         self.current_row_index += 1
         self.chosen_colors = []
@@ -177,8 +216,9 @@ class MastermindGame:
 
     def end_game(self, message):
         # Adjust the x-coordinate to change the horizontal position
-        end_message = tk.Label(self.root, text=message, bg=WHITE, fg=RED, font=("Helvetica", 16))
-        end_message.place(relx=0.5, rely=1.0, anchor=tk.CENTER, y=-40)
+        end_message = tk.Label(self.root, text=message, bg=DARK_GREY, fg=WHITE, font=("Helvetica", 16))
+        end_message.place(relx=0.22, rely=1.0, anchor=tk.CENTER, y=-40)
+        self.timer_label.config(text="")  # Hide the timer message
 
 class MastermindMenu:
     def __init__(self, root):
