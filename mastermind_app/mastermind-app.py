@@ -17,13 +17,14 @@ INITIAL_POINTS = 13
 GUESS_TIMEOUT = 6  # Time limit for each guess in seconds
 
 class MastermindGame:
-    def __init__(self, root, code_length=4):
+    def __init__(self, root, code_length=4, time_limit=False):
         self.colors_4 = ["red", "yellow", "green", "blue", "purple", "pink"]
         self.colors_6 = ["red", "yellow", "green", "blue", "purple", "pink", "#FF4500", "brown"]
         self.secret_code = random.sample(self.colors_4 if code_length == 4 else self.colors_6, k=code_length)
         self.points = INITIAL_POINTS
         self.attempts_left = MAX_ATTEMPTS
         self.game_over = False
+        self.time_limit = time_limit  # Set the time_limit attribute
 
         self.root = root
         self.root.title("Mastermind")
@@ -60,7 +61,7 @@ class MastermindGame:
         # Initialize timer variables based on code_length
         if code_length == 4:
             self.timer_label = tk.Label(self.root, text="", bg=DARK_GREY, fg=WHITE, font=("Helvetica", 16))
-            self.timer_label.place(relx=0.3, rely=0.95, anchor=tk.CENTER)
+            self.timer_label.place(relx=0.28, rely=0.95, anchor=tk.CENTER)
             self.remaining_time = GUESS_TIMEOUT
         elif code_length == 6:
             self.timer_label = tk.Label(self.root, text="", bg=DARK_GREY, fg=WHITE, font=("Helvetica", 16))
@@ -78,10 +79,11 @@ class MastermindGame:
             self.update_timer()
 
     def update_timer(self):
-        self.timer_label.config(text=f"Time left: {self.remaining_time}")
-        if self.remaining_time > 0 and not self.game_over:
-            self.remaining_time -= 1
-            self.root.after(1000, self.update_timer)
+        if not self.game_over and self.time_limit and self.remaining_time > 0:
+            self.timer_label.config(text=f"Time left: {self.remaining_time}")
+            if self.remaining_time > 0:
+                self.remaining_time -= 1
+                self.root.after(1000, self.update_timer)
         elif not self.game_over:
             self.end_game("You lose.")
 
@@ -216,9 +218,13 @@ class MastermindGame:
 
     def end_game(self, message):
         # Adjust the x-coordinate to change the horizontal position
-        end_message = tk.Label(self.root, text=message, bg=DARK_GREY, fg=WHITE, font=("Helvetica", 16))
-        end_message.place(relx=0.22, rely=1.0, anchor=tk.CENTER, y=-40)
-        self.timer_label.config(text="")  # Hide the timer message
+        if len(self.secret_code) == 4:
+            end_message = tk.Label(self.root, text=message, bg=DARK_GREY, fg=WHITE, font=("Helvetica", 16))
+            end_message.place(relx=0.27, rely=1.0, anchor=tk.CENTER, y=-40)  # Adjusted relx value
+        else:
+            end_message = tk.Label(self.root, text=message, bg=DARK_GREY, fg=WHITE, font=("Helvetica", 16))
+            end_message.place(relx=0.22, rely=1.0, anchor=tk.CENTER, y=-40)
+        self.timer_label.config(text="")  # Hide the timer message  # Hide the timer message
 
 class MastermindMenu:
     def __init__(self, root):
@@ -313,7 +319,7 @@ class MastermindMenu:
     def start_game(self):
         self.root.destroy()
         root = tk.Tk()
-        game = MastermindGame(root, code_length=self.selected_code_length)
+        game = MastermindGame(root, code_length=self.selected_code_length, time_limit=self.time_limit)  # Pass time_limit parameter
         if self.selected_code_length == 6:
             game.board_frame.configure(width=game.board_frame.winfo_width() // 4)  # Resize the board frame
             game.feedback_frame.configure(width=game.feedback_frame.winfo_width() // 4)  # Resize the feedback frame
