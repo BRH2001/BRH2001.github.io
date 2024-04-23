@@ -23,8 +23,8 @@ class MastermindGame:
         self.secret_code = random.sample(self.colors_4 if code_length == 4 else self.colors_6, k=code_length)
         self.points = INITIAL_POINTS
         self.attempts_left = MAX_ATTEMPTS
-        self.game_over = False
-        self.time_limit = time_limit  # Set the time_limit attribute
+        self.game_over = False  # Initialize game_over attribute to False
+        self.time_limit = time_limit
 
         self.root = root
         self.root.title("Mastermind")
@@ -84,8 +84,11 @@ class MastermindGame:
             if self.remaining_time > 0:
                 self.remaining_time -= 1
                 self.root.after(1000, self.update_timer)
-        elif not self.game_over:
-            self.end_game("You lose.")
+        elif not self.game_over and self.time_limit:  # Only end game if timer is on
+            self.end_game("You lose.")  # End the game due to running out of time
+            # Disable color palette buttons
+            for widget in self.palette_frame.winfo_children():
+                widget.configure(state="disabled")
 
     def reset_timer(self):
         if len(self.secret_code) == 6:
@@ -135,7 +138,7 @@ class MastermindGame:
             color_button.pack(side=tk.LEFT, padx=0)
 
     def on_color_click(self, color):
-        if self.attempts_left > 0 and not self.game_over:
+        if self.attempts_left > 0 and not self.game_over:  # Check if the game is still ongoing
             row_index = self.current_row_index
             if len(self.chosen_colors) < len(self.secret_code):
                 if color not in self.chosen_colors:
@@ -151,6 +154,10 @@ class MastermindGame:
                 else:
                     # Color already chosen, do nothing
                     pass
+        else:
+            # Game is over, disable color palette buttons
+            for widget in self.palette_frame.winfo_children():
+                widget.configure(state="disabled")
 
     def evaluate_guess(self):
         self.reset_timer()  # Reset timer after each guess
@@ -224,7 +231,7 @@ class MastermindGame:
         else:
             end_message = tk.Label(self.root, text=message, bg=DARK_GREY, fg=WHITE, font=("Helvetica", 16))
             end_message.place(relx=0.22, rely=1.0, anchor=tk.CENTER, y=-40)
-        self.timer_label.config(text="")  # Hide the timer message  # Hide the timer message
+        self.timer_label.config(text="")  # Hide the timer message
 
 class MastermindMenu:
     def __init__(self, root):
