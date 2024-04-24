@@ -31,8 +31,8 @@ class MastermindGame:
         self.root.configure(bg=DARK_GREY)
 
         # Set the initial window size and position
-        window_width = 4 * COLUMN_SIZE + 500  # Adjusted to remove black space on the right
-        window_height = MAX_ATTEMPTS * ROW_SIZE + 300
+        window_width = 20 * COLUMN_SIZE + 600  # Adjusted to remove black space on the right
+        window_height = MAX_ATTEMPTS * ROW_SIZE + 350
         screen_width = root.winfo_screenwidth()
         screen_height = root.winfo_screenheight()
         x_coordinate = (screen_width - window_width) // 2  # Center horizontally
@@ -41,7 +41,7 @@ class MastermindGame:
 
         # Adjust window size and grid dimensions for 6 colors
         if code_length == 6:
-            window_width = 1 * COLUMN_SIZE + 900  # Increase window width to accommodate larger grids
+            window_width = 14 * COLUMN_SIZE + 900  # Increase window width to accommodate larger grids
             self.root.geometry(f"{window_width}x{window_height}+{x_coordinate}+{y_coordinate}")
 
         self.create_board(code_length)
@@ -55,17 +55,17 @@ class MastermindGame:
 
         # Display initial points
         self.points_label = tk.Label(self.root, text=f"Points: {self.points}", bg=BLACK, fg=WHITE)
-        self.points_label.place(x=48 // 0.6, y=root.winfo_screenheight() - 212)
+        self.points_label.place(x=566 // 0.6, y=root.winfo_screenheight() - 212)
         self.create_color_palette()
 
         # Initialize timer variables based on code_length
         if code_length == 4:
             self.timer_label = tk.Label(self.root, text="", bg=DARK_GREY, fg=WHITE, font=("Helvetica", 16))
-            self.timer_label.place(relx=0.28, rely=0.95, anchor=tk.CENTER)
+            self.timer_label.place(relx=0.59, rely=0.86, anchor=tk.CENTER)
             self.remaining_time = GUESS_TIMEOUT
         elif code_length == 6:
             self.timer_label = tk.Label(self.root, text="", bg=DARK_GREY, fg=WHITE, font=("Helvetica", 16))
-            self.timer_label.place(relx=0.22, rely=0.95, anchor=tk.CENTER)  # Adjust position for 6-color mode
+            self.timer_label.place(relx=0.62, rely=0.864, anchor=tk.CENTER)  # Adjust position for 6-color mode
             self.remaining_time = 9  # Set timer to 9 seconds for 6-color mode
         else:
             raise ValueError("Invalid code length")
@@ -98,7 +98,7 @@ class MastermindGame:
 
     def create_board(self, code_length):
         self.board_frame = tk.Frame(self.root, bg=BLACK)
-        self.board_frame.pack(side=tk.LEFT, padx=(50, 10), expand=False)
+        self.board_frame.pack(side=tk.LEFT, padx=(555, 10), expand=False)
 
         self.rows = []
         for _ in range(MAX_ATTEMPTS):
@@ -130,12 +130,12 @@ class MastermindGame:
 
     def create_color_palette(self):
         self.palette_frame = tk.Frame(self.root, bg=LIGHT_GREY)
-        self.palette_frame.place(x=150 // 2, y=800)
+        self.palette_frame.place(x=1350 // 2, y=822)
 
         colors = self.colors_4 if len(self.secret_code) == 4 else self.colors_6
         for color in colors:
             color_button = tk.Button(self.palette_frame, width=3, height=1, bg=color, command=lambda c=color: self.on_color_click(c))
-            color_button.pack(side=tk.LEFT, padx=0)
+            color_button.pack(side=tk.LEFT, padx=0.3)
 
     def on_color_click(self, color):
         if self.attempts_left > 0 and not self.game_over:  # Check if the game is still ongoing
@@ -162,8 +162,6 @@ class MastermindGame:
     def evaluate_guess(self):
         self.reset_timer()  # Reset timer after each guess
         guess = [widget["bg"] for widget in self.rows[self.current_row_index].winfo_children()]
-        print("Guess:", guess)
-        print("Secret code:", self.secret_code)
         exact_matches = 0
         color_matches = 0
         secret_matched_indices = []
@@ -186,9 +184,6 @@ class MastermindGame:
         # Subtract exact matches from color matches
         color_matches -= exact_matches
 
-        print("Exact Matches:", exact_matches)
-        print("Color Matches:", color_matches)
-
         feedback_widgets = self.feedback_rows[self.current_row_index].winfo_children()
         feedback = []
 
@@ -203,8 +198,6 @@ class MastermindGame:
         for i, color in enumerate(feedback):
             canvas = feedback_widgets[i]
             self.draw_circle(canvas, ROW_SIZE / 2, ROW_SIZE / 2, DOT_RADIUS, fill=color)
-
-        print("Dots assigned:", ", ".join(feedback))  # Add this line to print feedback dots assigned
 
         self.attempts_left -= 1
         self.points -= 1
@@ -224,13 +217,12 @@ class MastermindGame:
         return canvas.create_oval(x - r, y - r, x + r, y + r, **kwargs)
 
     def end_game(self, message):
-        # Adjust the x-coordinate to change the horizontal position
         if len(self.secret_code) == 4:
             end_message = tk.Label(self.root, text=message, bg=DARK_GREY, fg=WHITE, font=("Helvetica", 16))
-            end_message.place(relx=0.27, rely=1.0, anchor=tk.CENTER, y=-40)  # Adjusted relx value
+            end_message.place(relx=0.59, rely=0.9, anchor=tk.CENTER, y=-40)  # Adjusted relx value
         else:
             end_message = tk.Label(self.root, text=message, bg=DARK_GREY, fg=WHITE, font=("Helvetica", 16))
-            end_message.place(relx=0.22, rely=1.0, anchor=tk.CENTER, y=-40)
+            end_message.place(relx=0.617, rely=0.905, anchor=tk.CENTER, y=-40)
         self.timer_label.config(text="")  # Hide the timer message
 
 class MastermindMenu:
