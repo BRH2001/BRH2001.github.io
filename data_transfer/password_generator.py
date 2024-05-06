@@ -1,135 +1,104 @@
-import pygame
+from random import randint
 import random
-import sys
+import string
 
-# Define colors
-WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
-RED = (255, 0, 0)
-GREEN = (0, 255, 0)
-BLUE = (0, 0, 255)
-YELLOW = (255, 255, 0)
-ORANGE = (255, 165, 0)
-PURPLE = (128, 0, 128)
-GRAY = (192, 192, 192)
 
-# Define constants
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 700
-ROW_SIZE = 50
-COLUMN_SIZE = 50
-CIRCLE_RADIUS = 20
-CODE_LENGTH = 4
-MAX_ATTEMPTS = 12
-MAX_POINTS = 13
+class Passwordgen:
 
-class MastermindGame:
     def __init__(self):
-        self.colors = [GREEN, PURPLE, BLUE, YELLOW, ORANGE, RED]
-        self.secret_code = [random.choice(self.colors) for _ in range(CODE_LENGTH)]
-        self.max_attempts = MAX_ATTEMPTS
-        self.points = MAX_POINTS
-        self.selected_colors = []
-        self.current_row = 0
-        self.attempts_left = self.max_attempts
-        self.result_board = []
 
-        self.init_pygame()
+        self.lowercase_letters = string.ascii_lowercase
+        self.uppercase_letters = string.ascii_uppercase
+        self.digits = string.digits
+        self.symbols = string.punctuation
 
-    def init_pygame(self):
-        pygame.init()
-        self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-        pygame.display.set_caption("Mastermind")
-        self.clock = pygame.time.Clock()
+        self.length = 32  # Fixed length of 32 characters
+        self.num_passwords = 50
 
-        self.font = pygame.font.SysFont(None, 24)
-        self.small_font = pygame.font.SysFont(None, 18)
-        self.big_font = pygame.font.SysFont(None, 36)
+    def run_gen(self):
+        with open("passwords.txt", "w") as file:
+            for _ in range(self.num_passwords):
+                self._generate_password()
+                file.write(self.password + "\n")
 
-        self.create_board()
+        print(f"{self.num_passwords} secure passwords generated and saved to 'passwords.txt'.\n")
+        self._pick_three_passwords()
 
-    def create_board(self):
-        self.create_guess_board()
+    def _generate_password(self):
+        # Ensure the length is at least 32 characters
+        if self.length < 32:
+            return "Password length should be at least 32 characters."
 
-    def create_guess_board(self):
-        self.guess_board = []
-        for i in range(MAX_ATTEMPTS):
-            row = [BLACK] * CODE_LENGTH
-            self.guess_board.append(row)
+        # Make a password with randomly generated characters
+        self.password = ''
+        for _ in range(self.length):
+            lowercase_letter = random.choice(self.lowercase_letters)
+            uppercase_letter = random.choice(self.uppercase_letters)
+            digit = random.choice(self.digits)
+            symbol = random.choice(self.symbols)
 
-    def draw_board(self):
-        self.screen.fill(GRAY)
+            all_characters = [lowercase_letter, uppercase_letter, digit, symbol]
+            x = random.choices(all_characters, k=1)
+            self.password += x[0]
 
-        # Draw guess rows
-        for row_index, row in enumerate(self.guess_board):
-            for col_index, color in enumerate(row):
-                pygame.draw.circle(self.screen, color, ((col_index + 1) * COLUMN_SIZE + COLUMN_SIZE // 2, (row_index + 1) * ROW_SIZE + ROW_SIZE // 2), CIRCLE_RADIUS)
+        self._check_all_characters()
 
-            # Draw response dots
-            for i in range(4):
-                if row_index < self.current_row:
-                    response_color = self.result_board[row_index][i]
-                    pygame.draw.circle(self.screen, response_color, (CODE_LENGTH * COLUMN_SIZE + COLUMN_SIZE * i + COLUMN_SIZE // 2 + 300, (row_index + 1) * ROW_SIZE + ROW_SIZE // 2), 5)
+    def _check_all_characters(self):
+        """Check if every type of character is used in the generated password"""
+        self.lowercase = False
+        self.uppercase = False
+        self.digit = False
+        self.symbol = False
 
-        # Draw color palette
-        for i, color in enumerate(self.colors):
-            pygame.draw.circle(self.screen, color, (SCREEN_WIDTH - 200 + (i % 2) * 100, SCREEN_HEIGHT - 200 + (i // 2) * 50), CIRCLE_RADIUS)
-
-        pygame.display.update()
-
-    def handle_event(self, event):
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit()
-        elif event.type == pygame.MOUSEBUTTONDOWN and self.attempts_left > 0:
-            pos = pygame.mouse.get_pos()
-            if pos[1] < SCREEN_HEIGHT - 200:
-                # Check if the click is within the color palette
-                if SCREEN_WIDTH - 200 <= pos[0] < SCREEN_WIDTH - 100 and SCREEN_HEIGHT - 200 <= pos[1] < SCREEN_HEIGHT - 100:
-                    color_index = (pos[1] - (SCREEN_HEIGHT - 200)) // 50 * 2 + (pos[0] - (SCREEN_WIDTH - 200)) // 100
-                    selected_color = self.colors[color_index]
-                    if len(self.selected_colors) < CODE_LENGTH:
-                        self.selected_colors.append(selected_color)
-                        self.update_guess_board(selected_color)
-                        pygame.display.update()  # Update display after selecting a color
-
-    def update_guess_board(self, selected_color):
-        row_index = self.current_row
-        for col_index, color in enumerate(self.guess_board[row_index]):
-            if color == BLACK:
-                self.guess_board[row_index][col_index] = selected_color
+        # Check each individual character to see if it is present in the password string
+        for y in self.password:
+            if y in self.lowercase_letters and not self.lowercase:
+                self.lowercase = True
+            if y in self.uppercase_letters and not self.uppercase:
+                self.uppercase = True
+            if y in self.digits and not self.digit:
+                self.digit = True
+            if y in self.symbols and not self.symbol:
+                self.symbol = True
+            if self.lowercase and self.uppercase and self.digit and self.symbol:
                 break
-        if len(self.selected_colors) == CODE_LENGTH:
-            self.check_guess()
 
-    def check_guess(self):
-        exact_matches = sum(1 for x, y in zip(self.guess_board[self.current_row], self.secret_code) if x == y)
-        color_matches = sum(min(self.guess_board[self.current_row].count(color), self.secret_code.count(color)) for color in set(self.guess_board[self.current_row])) - exact_matches
+        # If one of the character types isn't present, remove the last character and replace it with the missing one
+        if not self.lowercase:
+            self.password.pop()
+            self.password += random.choice(self.lowercase_letters)
+        if not self.uppercase:
+            self.password.pop()
+            self.password += random.choice(self.uppercase_letters)
+        if not self.digit:
+            self.password.pop()
+            self.password += random.choice(self.digits)
+        if not self.symbol:
+            self.password.pop()
+            self.password += random.choice(self.symbols)
 
-        self.result_board.append([RED]*exact_matches + [WHITE]*color_matches + [BLACK]*(CODE_LENGTH - exact_matches - color_matches))
-        self.attempts_left -= 1
-        self.current_row += 1
-        self.selected_colors = []
+    @staticmethod
+    def _pick_three_passwords():
+        # Makes a list with 3 random numbers between 1 and 50
+        random_list = []
+        while len(random_list) != 3:
+            x = randint(1, 50)
+            random_list.append(x)
+            # Making sure the program doesn't accidentally have a duplicate number
+            random_list = list(dict.fromkeys(random_list))
 
-        if exact_matches == CODE_LENGTH:
-            self.points = max(self.points - (MAX_ATTEMPTS - self.attempts_left), 1)
-            self.show_message("Congratulations!", f"You cracked the code with {self.attempts_left} attempts left.")
-        elif self.attempts_left == 0:
-            self.show_message("Game Over", "You ran out of attempts. Better luck next time.")
+        # Read the lines in the file, make it into a list and then use the random numbers to only print out 3 of them
+        with open("passwords.txt", "r") as file:
+            lines = file.readlines()
+        with open("passwords.txt", "w") as file:
+            for number, line in enumerate(lines):
+                if number in random_list:
+                    file.write(line)
+            file.close()
 
-    def show_message(self, title, message):
-        pygame.time.delay(1000)
-        pygame.quit()
-        sys.exit()
+        print("Randomly chose 3 of the 50 generated passwords to use for the text files")
 
-    def play(self):
-        while True:
-            for event in pygame.event.get():
-                self.handle_event(event)
-
-            self.draw_board()
-            self.clock.tick(60)
 
 if __name__ == "__main__":
-    game = MastermindGame()
-    game.play()
+    pg = Passwordgen()
+    pg.run_gen()
