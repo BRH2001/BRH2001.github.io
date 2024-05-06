@@ -116,8 +116,8 @@ class MarsRoverPhotoViewer(tk.Tk):
         self.photo_index = 0  
         self.show_photo(self.photo_index)
         self.save_button.pack(anchor="center", padx=10, pady=(5, 0))
-        self.prev_button.pack(side="left", padx=(0, 5))  # Show the previous button
-        self.next_button.pack(side="left")  # Show the next button
+        self.prev_button.pack(side="left", padx=(0, 5))
+        self.next_button.pack(side="left")
 
     def show_photo(self, index):
         if 0 <= index < len(self.current_photos):
@@ -183,7 +183,7 @@ class MarsRoverPhotoViewer(tk.Tk):
             
             self.display_photos()
             self.loading_label.pack_forget()  
-            self.fetch_button.pack(anchor="center", padx=10, pady=(5, 0))  # Show the "Fetch Photos" button
+            self.fetch_button.pack(anchor="center", padx=10, pady=(5, 0))
             
         except Exception as e:
             print("An error occurred:", str(e))

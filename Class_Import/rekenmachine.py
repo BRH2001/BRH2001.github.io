@@ -36,24 +36,19 @@ class CalculatorUI:
 
         self.root = tk.Tk()
         self.root.title("Rekenmachine")
-        self.root.geometry("400x150")  # Set initial window size
+        self.root.geometry("400x150")
 
-        # Configure style for background gradient
         style = ttk.Style()
         style.configure("TFrame", background="#000000")
 
-        # Increase font size for scaled-up elements.
         font_size = 14
 
-        # Create frame with gradient background
         self.frame = ttk.Frame(self.root, style="TFrame")
         self.frame.pack(fill=tk.BOTH, expand=True)
 
-        # Label
         self.label = tk.Label(self.frame, text="Voer twee getallen in:", font=("Arial", font_size), fg="#FFFFFF", bg="#000000")
         self.label.pack()
 
-        # Entry fields for numbers
         entry_frame = tk.Frame(self.frame, bg="#000000")
         entry_frame.pack()
 
@@ -63,7 +58,6 @@ class CalculatorUI:
         self.second_number_entry = tk.Entry(entry_frame, font=("Arial", font_size), width=10)
         self.second_number_entry.pack(side=tk.RIGHT, padx=5)
 
-        # Buttons
         button_frame = tk.Frame(self.frame, bg="#000000")
         button_frame.pack()
 
@@ -76,7 +70,6 @@ class CalculatorUI:
         self.product_button = tk.Button(button_frame, text="Product", command=self.calculate_product, font=("Arial", font_size), bg="#808080", fg="#FFFFFF")
         self.product_button.pack(side=tk.LEFT, padx=5, pady=5)
 
-        # Result label
         self.result_label = tk.Label(self.frame, text="", font=("Arial", font_size), fg="#FFFFFF", bg="#000000")
         self.result_label.pack()
 

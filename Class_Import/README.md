@@ -1,6 +1,6 @@
 # klassen-importeren
 
-Groepsopdracht dat drie afzonderlijke programmas bevat die als klasses samengevoegd worden in een enkel programma
+Deze groepsopdracht bevat drie afzonderlijke programmas die als klasses samengevoegd worden in een enkel programma
 
 De afzonderlijke klasses zijn:
 1) Een rekenmachine die de som, het verschil, en het product van twee getallen kan berekenen

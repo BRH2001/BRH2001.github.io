@@ -5,16 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>brh2001's Portfolio</title>
   <style>
-/* General Styles */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #474747; /* Set background color to dark-grey */
-  min-height: 100vh; /* Ensure page takes at least full viewport height */
+  background-color: #474747;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  position: relative; /* Ensure body is the reference for absolute positioning */
+  position: relative;
 }
 header {
   background-color: #474747;
@@ -22,10 +21,10 @@ header {
   color: #ffffff;
   text-align: center;
   padding: 20px 0;
-  flex-shrink: 0; /* Prevent header from shrinking */
-  font-size: 16px; /* Default font size for header */
-  position: relative; /* Ensure relative positioning for absolute children */
-  z-index: 2; /* Ensure header is above other elements */
+  flex-shrink: 0;
+  font-size: 16px;
+  position: relative;
+  z-index: 2;
 }
 footer {
   background-color: #474747;
@@ -33,81 +32,79 @@ footer {
   color: #ffffff;
   text-align: center;
   padding: 20px 0;
-  flex-shrink: 0; /* Prevent footer from shrinking */
-  position: relative; /* Ensure relative positioning for absolute children */
-  z-index: 2; /* Ensure footer is above other elements */
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
 }
 .container {
   max-width: 800px;
   margin: auto;
   padding: 20px;
-  flex-grow: 1; /* Allow container to grow to fill remaining space */
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  position: relative; /* Ensure relative positioning for absolute children */
-  z-index: 2; /* Ensure container is above other elements */
+  position: relative;
+  z-index: 2;
 }
 section {
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.555); /* Black background with 0.5 transparency */
+  background-color: rgba(0, 0, 0, 0.555);
   padding: 20px;
-  border-radius: 10px; /* Add rounded corners to sections */
-  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3); /* Add box shadow for depth */
-  margin-bottom: 20px; /* Add margin to create distance between sections */
-  transition: transform 0.2s; /* Smooth transition for size change */
-  position: relative; /* Ensure relative positioning for absolute children */
-  z-index: 2; /* Ensure sections are above other elements */
-  color: #ffffff; /* White text color */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+  margin-bottom: 20px;
+  transition: transform 0.2s;
+  position: relative;
+  z-index: 2;
+  color: #ffffff;
 }
 .projects:hover,
 .about:hover {
-  transform: scale(1.05); /* Increase size on hover */
+  transform: scale(1.05);
 }
 section h2 {
-  color: #ffffff; /* Change section heading color */
+  color: #ffffff;
 }
 section p {
-  color: #ffffff; /* Change paragraph color */
+  color: #ffffff;
 }
 section ul {
-  list-style-type: none; /* Remove default list style */
+  list-style-type: none;
   padding: 0;
 }
 section ul li {
   margin-bottom: 10px;
 }
 section ul li a {
-  color: #00ffbf; /* Change link color */
-  text-decoration: none; /* Remove underline */
+  color: #00ffbf;
+  text-decoration: none;
 }
 section ul li a:hover {
-  text-decoration: underline; /* Add underline on hover */
+  text-decoration: underline;
 }
 .logo {
-  position: absolute; /* Position logo absolutely */
-  top: 50%; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  transform: translate(-50%, -50%); /* Center the logo */
-  z-index: 1; /* Ensure logo is behind other elements */
-  width: 550px; /* Set the width of the logo */
-  height: auto; /* Maintain aspect ratio */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 550px;
+  height: auto;
 }
-
-/* Corner Triangular Cut Rectangles */
 .corner-rectangle {
   position: absolute;
   width: 100px;
   height: 100px;
-  z-index: 1; /* Ensure rectangles are behind other elements */
+  z-index: 1;
 }
 .top-left {
   top: 0;
   left: 0;
-  clip-path: polygon(0 0, calc(100% - 1px) 0, 0 calc(100% - 1px)); /* Adjusted clip-path to remove small white triangle */
-  background-color: #000000; /* Black color for top left rectangle */
+  clip-path: polygon(0 0, calc(100% - 1px) 0, 0 calc(100% - 1px));
+  background-color: #000000;
 }
 .bottom-left, .top-right {
-  background-color: #000000; /* Black color for rectangles */
+  background-color: #000000;
 }
 .bottom-right {
   bottom: 0;
@@ -115,13 +112,12 @@ section ul li a:hover {
   clip-path: polygon(100% 100%, 0 100%, 100% 0);
   background: linear-gradient(-45deg, rgba(0, 0, 0, 0.6) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.5) 75%);
 }
-/* Adjustments for Phones */
 @media screen and (max-width: 500px) {
   header h1 {
-    font-size: 19px; /* Reduce font size for phones */
+    font-size: 19px;
   }
   .logo {
-    width: 432px; /* Set a smaller width for the logo on phones */
+    width: 432px;
   }
 }
   </style>
@@ -135,7 +131,7 @@ section ul li a:hover {
       <h2>Projecten</h2>
       <ul>
         <li><a href="https://github.com/BRH2001/BRH2001.github.io/tree/main/Mars_Retrieval">Mars_Rover App.</a></li>
-        <li><a href="https://github.com/BRH2001/BRH2001.github.io/tree/main/Kenteken_Checker">Kenteken_Checker App.</a></li>
+        <li><a href="https://github.com/BRH2001/BRH2001.github.io/tree/main/License_Checker">Kenteken_Checker App.</a></li>
         <li><a href="https://github.com/BRH2001/BRH2001.github.io/tree/main/Data_Transfer">Data_Transfer Project.</a></li>
         <li><a href="https://github.com/BRH2001/BRH2001.github.io/tree/main/Class_Import">Class_Import Project.</a></li>
         <li><a href="https://github.com/BRH2001/BRH2001.github.io/tree/main/Mastermind_Game">Mastermind_Web Game.</a></li>
@@ -143,18 +139,13 @@ section ul li a:hover {
     </section>
     <section class="about">
       <h2>Over mij</h2>
-      <p>Ik ben 23 jaar oud en gepassioneerd over softwareontwikkeling. <p>Momenteel studeer ik aan het Rea College in Groningen, waar ik me specialiseer in het bouwen van innovatieve en gebruiksvriendelijke applicaties. Mijn doel is om een ervaren applicatieontwikkelaar te worden en bij te dragen aan de groei van de technologische industrie.</p>
-      <p>Naast mijn studie werk ik aan verschillende projecten om mijn vaardigheden te verbeteren en nieuwe technologieën te verkennen. 
-      <p>Deze site biedt een glimp van enkele van mijn recente projecten en mijn creatieve benadering van softwareontwikkeling. Ik streef er naar om zo veel moegelijk te groeien en leren. zo ben ik ben vaak op zoek naar nieuwe uitdagingen en kansen om mijn kennis uit te breiden. 
-      <p>Ik ben enthousiast over de toekomst van technologie en de impact die we kunnen hebben door middel van innovatie.
+      <p>Ik ben 23 jaar oud en gepassioneerd over softwareontwikkeling.</p><p>Momenteel studeer ik aan het Rea College in Groningen, waar ik me specialiseer in het bouwen van innovatieve en gebruiksvriendelijke applicaties. Mijn doel is om een ervaren applicatieontwikkelaar te worden en bij te dragen aan de groei van de technologische industrie.</p>
+      <p>Naast mijn studie werk ik aan verschillende projecten om mijn vaardigheden te verbeteren en nieuwe technologieën te verkennen.</p><p>Deze site biedt een glimp van enkele van mijn recente projecten en mijn creatieve benadering van softwareontwikkeling. Ik streef er naar om zo veel moegelijk te groeien en leren. zo ben ik ben vaak op zoek naar nieuwe uitdagingen en kansen om mijn kennis uit te breiden.</p><p>Ik ben enthousiast over de toekomst van technologie en de impact die we kunnen hebben door middel van innovatie.</p>
     </section>    
   </div>
   <footer>
     <p>&copy; Bartho Hartjes 2024</p>
   </footer>
-  <!-- Corner Triangular Cut Rectangles -->
-  <!-- Remove the unnecessary div elements -->
   <img src="trinity-web.png" alt="Logo" class="logo">
 </body>
 </html>
-

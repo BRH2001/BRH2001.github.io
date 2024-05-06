@@ -16,7 +16,7 @@ def fetch_vehicle_data():
         result = car.get_vehicle_data(license_plate)
         if result:
             global vehicle_data
-            vehicle_data = result[0]  # Store fetched vehicle data
+            vehicle_data = result[0]
             display_filter_options()
         else:
             result_text.config(text="gefaald om data op te halen.") 
@@ -25,17 +25,17 @@ def fetch_vehicle_data():
 
 def display_filter_options():
     filter_label.config(text="kies filter:", fg='white', bg='black')
-    filter_label.grid(row=3, column=0, padx=(10, 5), pady=5, sticky="w")  # Adjusted padx and sticky
+    filter_label.grid(row=3, column=0, padx=(10, 5), pady=5, sticky="w")
 
     # Define filter options
     filter_options = ["alles zien", "basis informatie", "aanvullende data", "Datums"]
 
     # Create buttons for each filter option
     for i, option in enumerate(filter_options):
-        padx_left = (5 if i != 0 else 120, 5)  # Adjust padding for symmetry
-        padx_right = (5, 120 if i != 3 else 5)  # Adjust padding for symmetry
+        padx_left = (5 if i != 0 else 120, 5)
+        padx_right = (5, 120 if i != 3 else 5)
         filter_button = tk.Button(root, text=option, command=lambda op=option: apply_filter(op))
-        filter_button.grid(row=3, column=i, padx=padx_left, pady=5, sticky="ew")  # Use sticky="ew" for horizontal alignment
+        filter_button.grid(row=3, column=i, padx=padx_left, pady=5, sticky="ew")
 
 def apply_filter(option):
     if option == "alles zien":
@@ -61,9 +61,9 @@ def display_filtered_data(option):
     result_text.config(text=filter_text)
 
 def format_date(date_str):
-    if date_str and "T" in date_str:  # Check if the date string contains a timestamp
-        date_str = date_str.split("T")[0]  # Extract only the date part
-    if date_str and len(date_str) >= 8:  # Check if the date string is valid
+    if date_str and "T" in date_str:
+        date_str = date_str.split("T")[0]
+    if date_str and len(date_str) >= 8:
         # Add hyphens between the numbers if they are not already present
         if "-" not in date_str:
             return f"{date_str[:4]}-{date_str[4:6]}-{date_str[6:]}"
