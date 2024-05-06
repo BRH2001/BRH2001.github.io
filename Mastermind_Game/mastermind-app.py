@@ -14,7 +14,7 @@ COLUMN_SIZE = 50
 DOT_RADIUS = 5
 MAX_ATTEMPTS = 12
 INITIAL_POINTS = 13
-GUESS_TIMEOUT = 6  # Time limit for each guess in seconds
+GUESS_TIMEOUT = 6  
 
 class MastermindGame:
     def __init__(self, root, code_length=4, time_limit=False):
@@ -23,7 +23,7 @@ class MastermindGame:
         self.secret_code = random.sample(self.colors_4 if code_length == 4 else self.colors_6, k=code_length)
         self.points = INITIAL_POINTS
         self.attempts_left = MAX_ATTEMPTS
-        self.game_over = False  # Initialize game_over attribute to False
+        self.game_over = False  
         self.time_limit = time_limit
 
         self.root = root
@@ -31,17 +31,17 @@ class MastermindGame:
         self.root.configure(bg=DARK_GREY)
 
         # Set the initial window size and position
-        window_width = 20 * COLUMN_SIZE + 600  # Adjusted to remove black space on the right
+        window_width = 20 * COLUMN_SIZE + 600  
         window_height = MAX_ATTEMPTS * ROW_SIZE + 350
         screen_width = root.winfo_screenwidth()
         screen_height = root.winfo_screenheight()
-        x_coordinate = (screen_width - window_width) // 2  # Center horizontally
+        x_coordinate = (screen_width - window_width) // 2  
         y_coordinate = (screen_height - window_height) // 6
         self.root.geometry(f"{window_width}x{window_height}+{x_coordinate}+{y_coordinate}")
 
         # Adjust window size and grid dimensions for 6 colors
         if code_length == 6:
-            window_width = 14 * COLUMN_SIZE + 900  # Increase window width to accommodate larger grids
+            window_width = 14 * COLUMN_SIZE + 900
             self.root.geometry(f"{window_width}x{window_height}+{x_coordinate}+{y_coordinate}")
 
         self.create_board(code_length)
@@ -65,8 +65,8 @@ class MastermindGame:
             self.remaining_time = GUESS_TIMEOUT
         elif code_length == 6:
             self.timer_label = tk.Label(self.root, text="", bg=DARK_GREY, fg=WHITE, font=("Helvetica", 16))
-            self.timer_label.place(relx=0.62, rely=0.864, anchor=tk.CENTER)  # Adjust position for 6-color mode
-            self.remaining_time = 9  # Set timer to 9 seconds for 6-color mode
+            self.timer_label.place(relx=0.62, rely=0.864, anchor=tk.CENTER)  
+            self.remaining_time = 9  
         else:
             raise ValueError("Invalid code length")
 
@@ -84,17 +84,17 @@ class MastermindGame:
             if self.remaining_time > 0:
                 self.remaining_time -= 1
                 self.root.after(1000, self.update_timer)
-        elif not self.game_over and self.time_limit:  # Only end game if timer is on
-            self.end_game("You lose.")  # End the game due to running out of time
-            # Disable color palette buttons
+        elif not self.game_over and self.time_limit:  
+            self.end_game("You lose.")  
+            
             for widget in self.palette_frame.winfo_children():
                 widget.configure(state="disabled")
 
     def reset_timer(self):
         if len(self.secret_code) == 6:
-            self.remaining_time = 9  # Reset timer to 9 seconds for 6-color mode
+            self.remaining_time = 9  
         else:
-            self.remaining_time = GUESS_TIMEOUT  # Reset timer to default value for 4-color mode
+            self.remaining_time = GUESS_TIMEOUT  
 
     def create_board(self, code_length):
         self.board_frame = tk.Frame(self.root, bg=BLACK)
@@ -114,7 +114,7 @@ class MastermindGame:
         self.feedback_frame = tk.Frame(self.root, bg=DARK_GREY)
         self.feedback_frame.pack(side=tk.LEFT, padx=(10, 200), expand=False)
 
-        for _ in range(3):  # Adjust the position slightly downwards
+        for _ in range(3):  
             empty_row = tk.Frame(self.feedback_frame, bg=WHITE)
             empty_row.pack(side=tk.TOP)
 
@@ -138,7 +138,7 @@ class MastermindGame:
             color_button.pack(side=tk.LEFT, padx=0.3)
 
     def on_color_click(self, color):
-        if self.attempts_left > 0 and not self.game_over:  # Check if the game is still ongoing
+        if self.attempts_left > 0 and not self.game_over:  
             row_index = self.current_row_index
             if len(self.chosen_colors) < len(self.secret_code):
                 if color not in self.chosen_colors:
@@ -160,7 +160,7 @@ class MastermindGame:
                 widget.configure(state="disabled")
 
     def evaluate_guess(self):
-        self.reset_timer()  # Reset timer after each guess
+        self.reset_timer()  
         guess = [widget["bg"] for widget in self.rows[self.current_row_index].winfo_children()]
         exact_matches = 0
         color_matches = 0
@@ -219,11 +219,11 @@ class MastermindGame:
     def end_game(self, message):
         if len(self.secret_code) == 4:
             end_message = tk.Label(self.root, text=message, bg=DARK_GREY, fg=WHITE, font=("Helvetica", 16))
-            end_message.place(relx=0.59, rely=0.9, anchor=tk.CENTER, y=-40)  # Adjusted relx value
+            end_message.place(relx=0.59, rely=0.9, anchor=tk.CENTER, y=-40)
         else:
             end_message = tk.Label(self.root, text=message, bg=DARK_GREY, fg=WHITE, font=("Helvetica", 16))
             end_message.place(relx=0.617, rely=0.905, anchor=tk.CENTER, y=-40)
-        self.timer_label.config(text="")  # Hide the timer message
+        self.timer_label.config(text="")
 
 class MastermindMenu:
     def __init__(self, root):
@@ -318,10 +318,10 @@ class MastermindMenu:
     def start_game(self):
         self.root.destroy()
         root = tk.Tk()
-        game = MastermindGame(root, code_length=self.selected_code_length, time_limit=self.time_limit)  # Pass time_limit parameter
+        game = MastermindGame(root, code_length=self.selected_code_length, time_limit=self.time_limit)
         if self.selected_code_length == 6:
-            game.board_frame.configure(width=game.board_frame.winfo_width() // 4)  # Resize the board frame
-            game.feedback_frame.configure(width=game.feedback_frame.winfo_width() // 4)  # Resize the feedback frame
+            game.board_frame.configure(width=game.board_frame.winfo_width() // 4)
+            game.feedback_frame.configure(width=game.feedback_frame.winfo_width() // 4)
         root.mainloop()
 
 if __name__ == "__main__":
