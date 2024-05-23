@@ -96,7 +96,6 @@ function love.update(dt)
             elseif player.y > love.graphics.getHeight() - player.radius then
                 player.y = love.graphics.getHeight() - player.radius
             end
-
             for _, enemy in ipairs(enemies) do
                 enemy.x = enemy.x + enemy.speed * enemy.direction.x * dt
                 enemy.y = enemy.y + enemy.speed * enemy.direction.y * dt
@@ -199,7 +198,6 @@ function love.draw()
             love.graphics.print(text2, (love.graphics.getWidth() - textWidth2) / 2, (love.graphics.getHeight() - textHeight2) / 2)
             love.graphics.print(text3, (love.graphics.getWidth() - textWidth3) / 2, (love.graphics.getHeight() - textHeight3) / 2 + 20)
         end
-
         if pause then
             local text = "Paused"
             local font = love.graphics.getFont()
@@ -217,7 +215,7 @@ function love.keypressed(key)
             gameState = "play"
             player.x = 400
             player.y = 300
-            player.invincibility = 2
+            player.invincibility = 1
             player.invincible = true
             coins = {}
             for i = 1, 20 do
