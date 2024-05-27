@@ -227,7 +227,7 @@ function love.keypressed(key)
             end
 
             enemies = {}
-            for i = 1, 10 do
+            for i = 1, 6 do
                 table.insert(enemies, {
                     x = love.math.random(50, love.graphics.getWidth() - 50),
                     y = love.math.random(50, love.graphics.getHeight() - 50),
@@ -236,7 +236,7 @@ function love.keypressed(key)
                     direction = love.math.random() < 0.5 and {x = 1, y = 0} or {x = -1, y = 0}
                 })
             end
-            for i = 1, 10 do
+            for i = 1, 6 do
                 table.insert(enemies, {
                     x = love.math.random(50, love.graphics.getWidth() - 50),
                     y = love.math.random(50, love.graphics.getHeight() - 50),
@@ -245,7 +245,7 @@ function love.keypressed(key)
                     direction = love.math.random() < 0.5 and {x = 0, y = 1} or {x = 0, y = -1}
                 })
             end
-            for i = 1, 6 do
+            for i = 1, 3 do
                 table.insert(enemies, {
                     x = love.math.random(50, love.graphics.getWidth() - 50),
                     y = love.math.random(50, love.graphics.getHeight() - 50),
