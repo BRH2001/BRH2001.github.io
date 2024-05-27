@@ -46,12 +46,14 @@
       position: relative;
       z-index: 2;
     }
-    .projects {
+    .projects-container {
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
     }
-    .project-column {
-      width: 48%;
+    .projects-container ul {
+      flex: 1;
+      margin: 0 10px;
     }
     section {
       text-align: center;
@@ -126,11 +128,11 @@
       .logo {
         width: 432px;
       }
-      .projects {
+      .projects-container {
         flex-direction: column;
       }
-      .project-column {
-        width: 100%;
+      .projects-container ul {
+        margin: 10px 0;
       }
     }
   </style>
@@ -141,16 +143,13 @@
   </header>
   <div class="container">
     <section class="projects">
-      <div class="project-column">
-        <h2>Projecten</h2>
+      <h2>Projecten</h2>
+      <div class="projects-container">
         <ul>
           <li><a href="https://github.com/BRH2001/BRH2001.github.io/tree/main/Mars_Retrieval">Mars_Rover App.</a></li>
           <li><a href="https://github.com/BRH2001/BRH2001.github.io/tree/main/License_Checker">Kenteken_Checker App.</a></li>
           <li><a href="https://github.com/BRH2001/BRH2001.github.io/tree/main/data_transfer">Data_Transfer Project.</a></li>
         </ul>
-      </div>
-      <div class="project-column">
-        <h2>Projecten</h2>
         <ul>
           <li><a href="https://github.com/BRH2001/BRH2001.github.io/tree/main/Class_Import">Class_Import Project.</a></li>
           <li><a href="https://github.com/BRH2001/BRH2001.github.io/tree/main/Mastermind_Game">Mastermind_Web Game.</a></li>
@@ -165,7 +164,7 @@
       <p>Naast mijn studie werk ik aan verschillende projecten om mijn vaardigheden te verbeteren en nieuwe technologieën te verkennen.</p>
       <p>Deze site biedt een glimp van enkele van mijn recente projecten en mijn creatieve benadering van softwareontwikkeling. Ik streef er naar om zo veel moegelijk te groeien en leren. zo ben ik ben vaak op zoek naar nieuwe uitdagingen en kansen om mijn kennis uit te breiden.</p>
       <p>Ik ben enthousiast over de toekomst van technologie en de impact die we kunnen hebben door middel van innovatie.</p>
-    </section>
+    </section>    
   </div>
   <footer>
     <p>&copy; Bartho Hartjes 2024</p>
@@ -173,3 +172,5 @@
   <img src="trinity-web.png" alt="Logo" class="logo">
 </body>
 </html>
+
+     
