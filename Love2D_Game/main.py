@@ -48,7 +48,7 @@ class Player:
             self.y = screen_height - self.radius
 
     def draw(self):
-        color = BLACK if self.invincible else BLUE
+        color = GREY if self.invincible else BLUE
         pygame.draw.circle(screen, color, (int(self.x), int(self.y)), self.radius)
         if self.invincible:
             pygame.draw.circle(screen, BLUE, (int(self.x), int(self.y)), self.radius + 1, 1)
