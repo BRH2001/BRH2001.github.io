@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,7 @@
       flex-direction: column;
       position: relative;
     }
+
     header {
       background-color: #474747;
       background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.6) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0) 100%), linear-gradient(-45deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.5) 75%);
@@ -26,6 +28,7 @@
       position: relative;
       z-index: 2;
     }
+
     footer {
       background-color: #474747;
       background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.6) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0) 100%), linear-gradient(45deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.5) 75%);
@@ -36,6 +39,7 @@
       position: relative;
       z-index: 2;
     }
+
     .container {
       max-width: 800px;
       margin: auto;
@@ -46,16 +50,19 @@
       position: relative;
       z-index: 2;
     }
+
     .projects-container {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
     }
+
     .projects-container ul {
       flex: 1;
       margin: 1px;
       text-align: center;
     }
+
     section {
       text-align: center;
       background-color: rgba(0, 0, 0, 0.555);
@@ -68,30 +75,38 @@
       z-index: 2;
       color: #ffffff;
     }
+
     .projects:hover,
     .about:hover {
       transform: scale(1.05);
     }
+
     section h2 {
       color: #ffffff;
     }
+
     section p {
       color: #ffffff;
     }
+
     section ul {
       list-style-type: none;
       padding: 0;
     }
+
     section ul li {
       margin-bottom: 10px;
     }
+
     section ul li a {
       color: #00ffbf;
       text-decoration: none;
     }
+
     section ul li a:hover {
       text-decoration: underline;
     }
+
     .logo {
       position: absolute;
       top: 50%;
@@ -101,43 +116,53 @@
       width: 666px;
       height: auto;
     }
+
     .corner-rectangle {
       position: absolute;
       width: 100px;
       height: 100px;
       z-index: 1;
     }
+
     .top-left {
       top: 0;
       left: 0;
       clip-path: polygon(0 0, calc(100% - 1px) 0, 0 calc(100% - 1px));
       background-color: #000000;
     }
-    .bottom-left, .top-right {
+
+    .bottom-left,
+    .top-right {
       background-color: #000000;
     }
+
     .bottom-right {
       bottom: 0;
       right: 0;
       clip-path: polygon(100% 100%, 0 100%, 100% 0);
       background: linear-gradient(-45deg, rgba(0, 0, 0, 0.6) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.5) 75%);
     }
+
     @media screen and (max-width: 500px) {
       header h1 {
         font-size: 19px;
       }
+
       .logo {
         width: 432px;
       }
+
       .projects-container {
         flex-direction: column;
       }
+
       .projects-container ul {
         margin: 10px 0;
       }
     }
   </style>
 </head>
+
 <body>
   <header>
     <h1>Welkom bij mijn portfolio!</h1>
@@ -148,12 +173,16 @@
       <div class="projects-container">
         <ul>
           <li><a href="https://github.com/BRH2001/BRH2001.github.io/tree/main/Mars_Retrieval">Mars_Rover App.</a></li>
-          <li><a href="https://github.com/BRH2001/BRH2001.github.io/tree/main/License_Checker">Kenteken_Checker App.</a></li>
-          <li><a href="https://github.com/BRH2001/BRH2001.github.io/tree/main/data_transfer">Data_Transfer Project.</a></li>
+          <li><a href="https://github.com/BRH2001/BRH2001.github.io/tree/main/License_Checker">Kenteken_Checker App.</a>
+          </li>
+          <li><a href="https://github.com/BRH2001/BRH2001.github.io/tree/main/data_transfer">Data_Transfer Project.</a>
+          </li>
         </ul>
         <ul>
-          <li><a href="https://github.com/BRH2001/BRH2001.github.io/tree/main/Class_Import">Class_Import Project.</a></li>
-          <li><a href="https://github.com/BRH2001/BRH2001.github.io/tree/main/Mastermind_Game">Mastermind_Web Game.</a></li>
+          <li><a href="https://github.com/BRH2001/BRH2001.github.io/tree/main/Class_Import">Class_Import Project.</a>
+          </li>
+          <li><a href="https://github.com/BRH2001/BRH2001.github.io/tree/main/Mastermind_Game">Mastermind_Web Game.</a>
+          </li>
           <li><a href="https://github.com/BRH2001/BRH2001.github.io/tree/main/Orb-Dodger_Game">Orb_Dodger Game.</a></li>
         </ul>
       </div>
@@ -161,15 +190,21 @@
     <section class="about">
       <h2>Over mij</h2>
       <p>Ik ben 23 jaar oud en gepassioneerd over softwareontwikkeling.</p>
-      <p>Ik studeer nu bij het Rea College in Groningen, waar ik me specialiseer in het bouwen van innovatieve en gebruiksvriendelijke applicaties. Mijn doel is om een ervaren applicatieontwikkelaar te worden en bij te dragen aan de groei van de technologische industrie.</p>
-      <p>Op school en thuis werk ik aan verschillende projecten om mijn vaardigheden te verbeteren en nieuwe technologieën te verkennen.</p>
-      <p>Deze site biedt een glimps van enkele van mijn recente projecten en mijn creatieve benadering van softwareontwikkeling. Ik streef er naar om zo veel moegelijk te groeien en leren. zo ben ik ben vaak op zoek naar nieuwe uitdagingen en kansen om mijn kennis uit te breiden.</p>
-      <p>Ik ben enthousiast over de toekomst van technologie en de impact die we kunnen hebben door middel van innovatie.</p>
-    </section>    
+      <p>Ik studeer nu op het Rea College in Groningen, waar ik me specialiseer in het bouwen van innovatieve en
+        gebruiksvriendelijke applicaties. Mijn doel is om een ervaren applicatieontwikkelaar te worden en bij te dragen
+        aan de groei van de technologische industrie.</p>
+      <p>Ik werk aan verschillende projecten om mijn vaardigheden te verbeteren en nieuwe
+        technologieën te verkennen.</p>
+      <p>Deze site biedt een glimps van recente projecten en mijn creatieve benadering van
+        softwareontwikkeling. Ik streef er naar om zo veel moegelijk te groeien en leren</p>
+      <p>Ik ben enthousiast over de toekomst van technologie en de impact die we kunnen hebben door middel van
+        innovatie.</p>
+    </section>
   </div>
   <footer>
     <p>&copy; Bartho Hartjes 2024</p>
   </footer>
   <img src="trinity-web.png" alt="Logo" class="logo">
 </body>
+
 </html>
