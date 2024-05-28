@@ -41,7 +41,6 @@
     }
 
     .container {
-      max-width: 666px;
       margin: auto;
       padding: 3px;
       flex-grow: 1;
@@ -49,22 +48,22 @@
       flex-direction: column;
       position: relative;
       z-index: 2;
+      width: 369;
     }
 
     .projects-container {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  max-width: 334; /* Adjusted max-width */
   margin: auto;
-}
+  width: 285px;
 
 .projects-container ul {
   flex: 1;
   margin: 3px; /* Adjusted margin */
   text-align: left;
-  min-width: 285px; /* Ensure ul elements don't shrink too much */
   flex-direction: column;
+  width: 285px;
 }
 
     section {
@@ -117,7 +116,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       z-index: 1;
-      width: 582px;
+      width: 417px;
       height: auto;
     }
 
@@ -153,11 +152,12 @@
       }
 
       .logo {
-        width: 333px;
+        width: 369px;
       }
 
       .projects-container {
         flex-direction: column;
+        width: 285px;
       }
 
       .projects-container ul {
