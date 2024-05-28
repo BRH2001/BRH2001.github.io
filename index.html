@@ -52,17 +52,19 @@
     }
 
     .projects-container {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 333px; /* Adjusted max-width */
+  margin: auto;
+}
 
-    .projects-container ul {
-      flex: 0.3;
-      margin: 0.1px;
-      text-align: center;
-    }
-
+.projects-container ul {
+  flex: 1;
+  margin: 10px; /* Adjusted margin */
+  text-align: center;
+  min-width: 222px; /* Ensure ul elements don't shrink too much */
+}
     section {
       text-align: center;
       background-color: rgba(0, 0, 0, 0.555);
