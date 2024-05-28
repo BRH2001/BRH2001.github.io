@@ -52,16 +52,19 @@
     }
 
     .projects-container {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 333px; /* Adjusted max-width */
+  margin: auto;
+}
 
-    .projects-container ul {
-      flex: 1;
-      margin: 0.1px;
-      text-align: center;
-    }
+.projects-container ul {
+  flex: 1;
+  margin: 0.1px; /* Adjusted margin */
+  text-align: center;
+  min-width: 222px; /* Ensure ul elements don't shrink too much */
+}
 
     section {
       text-align: center;
