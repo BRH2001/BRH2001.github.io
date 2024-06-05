@@ -1,6 +1,16 @@
 import pygame
 import random
 
+# Visualization Behavior
+# Initial Setup: The array of bars is drawn on the screen, each bar representing a data point in the unsorted dataset.
+# Merge Sort Process:
+# The process starts by recursively dividing the dataset into halves until each sublist contains a single element.
+# The sublists are then merged back together in sorted order.
+# During the merging step, the data points are compared and positioned in the correct order.
+# This process ensures that the dataset is sorted efficiently.
+# Sorted State:
+# Once the sorting process is complete, all bars are colored green to indicate that the dataset is fully sorted and ready for analysis.
+
 # Constants
 WIDTH, HEIGHT = 800, 600
 BAR_WIDTH = 10

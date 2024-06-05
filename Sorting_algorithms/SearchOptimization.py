@@ -1,7 +1,6 @@
 import pygame
 import random
 
-
 # Visualization Behavior 
 # Initial Setup: The array of bars is drawn on the screen, each bar representing an element in the sorted list.
 # Binary Search sort Process:

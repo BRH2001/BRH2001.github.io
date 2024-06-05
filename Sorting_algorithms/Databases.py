@@ -1,6 +1,14 @@
 import pygame
 import random
 
+# Visualization Behavior
+# Initial Setup: The array of bars is drawn on the screen, each bar representing a database record's index in the unsorted list.
+# Insertion Sort Process:
+# The process starts by picking the second element of the array and compares it with the elements before it, inserting it into its correct position.
+# This process is repeated for each element until the array is sorted.
+# Sorted State:
+# Once the sorting process is complete, all bars are colored green to indicate that the database records are fully sorted by index.
+
 # Constants
 WIDTH, HEIGHT = 800, 600
 BAR_WIDTH = 10
@@ -9,24 +17,16 @@ COLORS = {
     'background': (0, 0, 0),
     'bar': (100, 100, 255),
     'sorted': (0, 255, 0),
+    'comparing': (255, 255, 0),
+    'inserting': (255, 0, 0),
 }
-
-# Visualization Behavior
-# Initial Setup: The array of bars is drawn on the screen, each bar representing a record in the unsorted database table.
-# Quick sort Process:
-# The process starts by selecting a pivot record from the unsorted database.
-# Records are then partitioned into two groups: those less than the pivot and those greater than or equal to the pivot.
-# This partitioning step ensures that the pivot record is in its final sorted position.
-# The process is then recursively applied to the two partitions until all records are sorted.
-# Sorted State:
-# Once the sorting process is complete, all bars are colored green to indicate that the database records are fully sorted.
 
 # Initialize Pygame
 pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Database Sorting Visualization")
+pygame.display.set_caption("Database Record Sorting Visualization")
 
-# Generate random data
+# Generate random database record indexes
 data = [random.randint(1, HEIGHT) for _ in range(NUM_BARS)]
 
 def draw_bars(data, color_positions={}):
@@ -38,33 +38,23 @@ def draw_bars(data, color_positions={}):
         pygame.draw.rect(screen, color, (i * BAR_WIDTH, HEIGHT - value, BAR_WIDTH, value))
     pygame.display.flip()
 
-def database_sort_visual(data):
-    def partition(arr, low, high):
-        pivot = arr[high]
-        i = low - 1
-        for j in range(low, high):
-            if arr[j] < pivot:
-                i += 1
-                arr[i], arr[j] = arr[j], arr[i]
-                draw_bars(data, {i: COLORS['sorted'], j: COLORS['sorted']})
-                pygame.time.delay(50)
-        arr[i + 1], arr[high] = arr[high], arr[i + 1]
-        draw_bars(data, {i + 1: COLORS['sorted'], high: COLORS['sorted']})
+def insertion_sort_visual(data):
+    for i in range(1, len(data)):
+        key = data[i]
+        j = i - 1
+        while j >= 0 and key < data[j]:
+            data[j + 1] = data[j]
+            j -= 1
+            draw_bars(data, {j: COLORS['comparing'], i: COLORS['inserting']})
+            pygame.time.delay(50)
+        data[j + 1] = key
+        draw_bars(data, {j + 1: COLORS['inserting'], i: COLORS['comparing']})
         pygame.time.delay(50)
-        return i + 1
-
-    def quick_sort(arr, low, high):
-        if low < high:
-            pi = partition(arr, low, high)
-            quick_sort(arr, low, pi - 1)
-            quick_sort(arr, pi + 1, high)
-
-    quick_sort(data, 0, len(data) - 1)
 
 def main():
     running = True
     sorted_data = data[:]  # Copy of data to be sorted
-    database_sort_visual(sorted_data)
+    insertion_sort_visual(sorted_data)
 
     while running:
         for event in pygame.event.get():
