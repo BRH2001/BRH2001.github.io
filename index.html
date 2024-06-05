@@ -106,14 +106,22 @@
     }
 
     .logo {
+      position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       z-index: 1;
-      width: 100%; 
-      max-width: 369px; 
+      width: 60%; /* Adjust width for larger screens */
+      max-width: 250px; /* Adjust max-width for larger screens */
       height: auto;
       pointer-events: none;
+    }
+
+    @media screen and (max-width: 528px) {
+      .logo {
+        width: 100%; /* Full width for mobile screens */
+        max-width: 369px; /* Maximum width for mobile screens */
+      }
     }
 
     .corner-rectangle {
@@ -145,11 +153,6 @@
     @media screen and (max-width: 528px) {
       header h1 {
         font-size: 17px;
-      }
-
-      .logo {
-        width: 100%;
-        max-width: 369px;
       }
 
       .about,
