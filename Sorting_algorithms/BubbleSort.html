@@ -1,91 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bubble Sort Visualization</title>
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background: #2c3e50;
-      font-family: Arial, sans-serif;
-    }
-    .bar {
-      display: inline-block;
-      margin: 0 1px;
-      background: linear-gradient(45deg, #3498db, #9b59b6);
-      transition: height 0.2s, background 0.2s;
-    }
-    .bar-container {
-      display: flex;
-      align-items: flex-end;
-    }
-    .bar.sorted {
-      background: linear-gradient(45deg, #2ecc71, #27ae60);
-    }
-    .bar.current {
-      background: linear-gradient(45deg, #e74c3c, #c0392b);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circle Sorting Animation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #333;
+            margin: 0;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            width: 90vw;
+            height: 90vh;
+        }
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            color: white;
+            font-size: 20px;
+            transition: transform 0.5s;
+        }
+    </style>
 </head>
 <body>
-  <div class="bar-container" id="bar-container"></div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
-  <script>
-    const barContainer = document.getElementById('bar-container');
-    const numBars = 50;
-    const maxHeight = 300;
-    let bars = [];
+    <div class="container" id="container"></div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.getElementById('container');
+            const numCircles = 20;
+            const circles = [];
 
-    // Generate random heights for bars
-    for (let i = 0; i < numBars; i++) {
-      const bar = document.createElement('div');
-      bar.classList.add('bar');
-      const height = Math.floor(Math.random() * maxHeight) + 10;
-      bar.style.height = `${height}px`;
-      bars.push(bar);
-      barContainer.appendChild(bar);
-    }
+            // Create circles
+            for (let i = 0; i < numCircles; i++) {
+                const circle = document.createElement('div');
+                circle.className = 'circle';
+                circle.style.width = '50px';
+                circle.style.height = '50px';
+                circle.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                circle.style.transform = `translate(${i * 60}px, ${Math.random() * 300}px)`;
+                circle.innerHTML = Math.floor(Math.random() * 100);
+                container.appendChild(circle);
+                circles.push(circle);
+            }
 
-    // Sound effects
-    const swapSound = new Howl({
-      src: ['https://freesound.org/data/previews/171/171671_2437358-lq.mp3'],
-      volume: 0.3
-    });
+            // Bubble sort animation
+            async function bubbleSort() {
+                let len = circles.length;
+                for (let i = 0; i < len; i++) {
+                    for (let j = 0; j < len - 1 - i; j++) {
+                        const a = parseInt(circles[j].innerHTML);
+                        const b = parseInt(circles[j + 1].innerHTML);
+                        if (a > b) {
+                            // Swap the circles
+                            const tempTransform = circles[j].style.transform;
+                            circles[j].style.transform = circles[j + 1].style.transform;
+                            circles[j + 1].style.transform = tempTransform;
 
-    async function bubbleSort() {
-      let len = bars.length;
-      for (let i = 0; i < len; i++) {
-        for (let j = 0; j < len - 1 - i; j++) {
-          bars[j].classList.add('current');
-          bars[j + 1].classList.add('current');
-          if (parseInt(bars[j].style.height) > parseInt(bars[j + 1].style.height)) {
-            await swapBars(j, j + 1);
-            swapSound.play();
-          }
-          bars[j].classList.remove('current');
-          bars[j + 1].classList.remove('current');
-        }
-        bars[len - 1 - i].classList.add('sorted');
-      }
-    }
+                            await new Promise(resolve => setTimeout(resolve, 500)); // Delay for animation
 
-    function swapBars(i, j) {
-      return new Promise(resolve => {
-        setTimeout(() => {
-          const tempHeight = bars[i].style.height;
-          bars[i].style.height = bars[j].style.height;
-          bars[j].style.height = tempHeight;
-          resolve();
-        }, 100);
-      });
-    }
+                            // Swap the circles in the array
+                            [circles[j], circles[j + 1]] = [circles[j + 1], circles[j]];
+                        }
+                    }
+                }
+                circles.forEach(circle => {
+                    circle.style.backgroundColor = 'green'; // Mark sorted circles
+                });
+            }
 
-    bubbleSort();
-  </script>
+            bubbleSort();
+        });
+    </script>
 </body>
 </html>
