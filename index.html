@@ -104,23 +104,24 @@
     .projects-container ul li a:hover {
       text-decoration: underline;
     }
-  
-    .logo {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  z-index: 1;
-  width: 40%; /* Adjust this value as needed */
-  height: auto;
-  pointer-events: none;
-}
 
-@media screen and (max-width: 528px) {
-  .logo {
-    width: 80%; 
-    max-width: 100%; 
-  }
-}
+    .logo {
+      position: relative;
+      top: 50%;
+      left: 50%;
+      z-index: 1;
+      width: 200px; /* Set an explicit width for the logo */
+      height: auto; /* Automatically adjust height to maintain aspect ratio */
+      transform: translate(-50%, -50%); /* Center the logo */
+      pointer-events: none;
+    }
+
+    @media screen and (max-width: 528px) {
+      .logo {
+        width: 80%;
+        max-width: 100%;
+      }
+    }
 
     .corner-rectangle {
       position: absolute;
