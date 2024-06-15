@@ -1,6 +1,16 @@
 import pygame
 import random
 
+# Visualization Behavior
+# Initial Setup: The array of bars is drawn on the screen, each bar representing an element in the unsorted list.
+# Merge Sort Process:
+# The process starts by dividing the unsorted list into n sublists, each containing one element (a single element is considered as sorted).
+# Then, it repeatedly merges sublists to produce new sorted sublists until there is only one sublist remaining.
+# During each merge, elements from the sublists are compared and merged into a single sorted sublist.
+# The sorting process continues until there is only one sorted sublist remaining, which represents the sorted list.
+# Sorted State:
+# Once the sorting process is complete, all bars are colored green to indicate that the list is fully sorted.
+
 # Constants
 WIDTH, HEIGHT = 800, 600
 BAR_WIDTH = 10
