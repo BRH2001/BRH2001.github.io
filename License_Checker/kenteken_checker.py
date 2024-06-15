@@ -1,5 +1,5 @@
 import tkinter as tk
-from rdw.rdw import Rdw
+import requests
 
 def preprocess_license_plate(license_plate):
     # Remove any whitespace and convert to uppercase
@@ -12,23 +12,28 @@ def fetch_vehicle_data():
     license_plate = license_plate_entry.get()
     if license_plate:
         license_plate = preprocess_license_plate(license_plate)
-        car = Rdw()
-        result = car.get_vehicle_data(license_plate)
-        if result:
-            global vehicle_data
-            vehicle_data = result[0]
-            display_filter_options()
-        else:
-            result_text.config(text="gefaald om data op te halen.") 
+        try:
+            url = f"https://opendata.rdw.nl/api/odata/v4/m9d7-ebf2?$filter=kenteken eq '{license_plate}'"
+            response = requests.get(url)
+            response.raise_for_status()  # Raise an exception for HTTP errors
+            data = response.json()
+            if data and 'value' in data and data['value']:
+                global vehicle_data
+                vehicle_data = data['value'][0]
+                display_filter_options()
+            else:
+                result_text.config(text="Geen data gevonden voor dit kenteken.")
+        except requests.exceptions.RequestException as e:
+            result_text.config(text=f"Fout bij het ophalen van data: {e}")
     else:
-        result_text.config(text="voer kentekennummer in:")
+        result_text.config(text="Voer kentekennummer in:")
 
 def display_filter_options():
-    filter_label.config(text="kies filter:", fg='white', bg='black')
+    filter_label.config(text="Kies filter:", fg='white', bg='black')
     filter_label.grid(row=3, column=0, padx=(10, 5), pady=5, sticky="w")
 
     # Define filter options
-    filter_options = ["alles zien", "basis informatie", "aanvullende data", "Datums"]
+    filter_options = ["Alles zien", "Basis informatie", "Aanvullende data", "Datums"]
 
     # Create buttons for each filter option
     for i, option in enumerate(filter_options):
@@ -38,13 +43,13 @@ def display_filter_options():
         filter_button.grid(row=3, column=i, padx=padx_left, pady=5, sticky="ew")
 
 def apply_filter(option):
-    if option == "alles zien":
+    if option == "Alles zien":
         display_vehicle_data(vehicle_data)
     else:
         if option in filter_mapping:
             display_filtered_data(option)
         else:
-            result_text.config(text=f"geen data beschikbaar voor {option}.")
+            result_text.config(text=f"Geen data beschikbaar voor {option}.")
 
 def display_filtered_data(option):
     filter_text = ""
@@ -93,7 +98,6 @@ def format_license_plate(license_plate):
     license_plate = license_plate.upper().replace("-", "").replace(" ", "")
     return "-".join([license_plate[:2], license_plate[2:4], license_plate[4:]])
 
-
 value_format_mapping = {
     "lengte": lambda value: f"{value} cm",
     "breedte": lambda value: f"{value} cm",
@@ -114,21 +118,20 @@ def format_value(key, value):
         return value_format_mapping[key](value)
     return value
 
-
 # Create the main Tkinter window
 root = tk.Tk()
-root.title("kenteken checker")
+root.title("Kenteken Checker")
 root.configure(bg='black')  # Set background color to black
 
 # License plate input field
-license_plate_label = tk.Label(root, text="voer kentekennummer in:", fg='white', bg='black')
+license_plate_label = tk.Label(root, text="Voer kentekennummer in:", fg='white', bg='black')
 license_plate_label.grid(row=0, column=0, padx=10, pady=5)
 
 license_plate_entry = tk.Entry(root)
 license_plate_entry.grid(row=0, column=1, padx=10, pady=5)
 
 # Button to fetch vehicle data
-fetch_button = tk.Button(root, text="zie voertuig data:", command=fetch_vehicle_data, bg='black', fg='white')
+fetch_button = tk.Button(root, text="Zie voertuig data:", command=fetch_vehicle_data, bg='black', fg='white')
 fetch_button.grid(row=1, column=0, columnspan=2, pady=5)
 
 # Text widget to display results
@@ -143,7 +146,7 @@ vehicle_data = None
 
 # Dictionary to map filter options to relevant keys in vehicle_data
 filter_mapping = {
-    "basis informatie": {
+    "Basis informatie": {
         "Kenteken": "kenteken",
         "Voertuigsoort": "voertuigsoort",
         "Merk": "merk",
@@ -175,23 +178,26 @@ filter_mapping = {
         "Datum eerste toelating": "datum_eerste_toelating_dt",
         "Datum eerste tenaamstelling in Nederland": "datum_eerste_tenaamstelling_in_nederland_dt"
     },
-    "aanvullende data": {
+    "Aanvullende data": {
         "Bruto BPM": "bruto_bpm",
         "Plaats chassisnummer": "plaats_chassisnummer",
-        "Europese voertuigcategorie": "europese_voertuigcategorie",
-        "Wacht op keuren": "wacht_op_keuren",
+        "Europese voertuigcategorie toevoeging": "europese_voertuigcategorie_toevoeging",
+        "Europese uitvoeringcategorie toevoeging": "europese_uitvoeringcategorie_toevoeging",
+        "Vervaldatum tachograaf": "vervaldatum_tachograaf_dt",
+        "Api geng": "api_geng",
+        "Api remmen": "api_remmen",
+        "Zuinigheidsclassificatie": "zuinigheidsclassificatie",
         "WAM verzekerd": "wam_verzekerd",
-        "Export indicator": "export_indicator",
-        "Openstaande terugroepactie indicator": "openstaande_terugroepactie_indicator",
+        "Maximale constructiesnelheid brom/snorfiets": "maximale_constructiesnelheid_brom_snorfiets",
+        "Laadvermogen": "laadvermogen",
+        "Oplegger geremd": "oplegger_geremd",
+        "Oplegger ongeremd": "oplegger_ongeremd",
         "Taxi indicator": "taxi_indicator",
         "Maximum massa samenstelling": "maximum_massa_samenstelling",
-        "Aantal rolstoelplaatsen": "aantal_rolstoelplaatsen",
-        "Jaar laatste registratie tellerstand": "jaar_laatste_registratie_tellerstand",
-        "Tellerstandoordeel": "tellerstandoordeel",
-        "Tenaamstellen mogelijk": "tenaamstellen_mogelijk",
-        "Zuinigheidsclassificatie": "zuinigheidsclassificatie"
+        "Type": "type",
+        "Type gasinstallatie": "type_gasinstallatie"
     }
 }
 
-# Run the Tkinter event loop
+# Start the Tkinter event loop
 root.mainloop()
