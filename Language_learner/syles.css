@@ -1,0 +1,103 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #474747;
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  header {
+    background-color: #474747;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+  }
+  
+  h1 {
+    margin: 0;
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
+  
+  .language-select {
+    margin-top: 10px;
+  }
+  
+  .container {
+    max-width: 800px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+  }
+  
+  section {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    margin-top: 0;
+    text-align: center;
+    color: #00ffbf;
+  }
+  
+  .flashcard, .quiz, .lesson {
+    background-color: rgba(0, 0, 0, 0.555);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+    text-align: center;
+    color: #ffffff;
+  }
+  
+  .flashcard h3, .quiz h3, .lesson h3 {
+    margin-top: 0;
+  }
+  
+  .flashcard p, .quiz p, .lesson p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .flashcard button, .quiz button, .lesson button {
+    background-color: #00ffbf;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .flashcard button:hover, .quiz button:hover, .lesson button:hover {
+    background-color: #00e6b8;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+  }
+  
+  ul li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  footer {
+    background-color: #474747;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    flex-shrink: 0;
+  }
+  
