@@ -11,14 +11,11 @@
       margin: 0;
       padding: 0;
       background-color: #474747;
-      /* background-image: url('trinity-web.png'); */ /* Removed the background image */
-      background-position: center;
-      background-size: contain;
-      background-repeat: no-repeat;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
+      position: relative;
     }
 
     header {
@@ -131,6 +128,21 @@
       background: linear-gradient(-45deg, rgba(0, 0, 0, 0.6) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.5) 75%);
     }
 
+    .logo-container {
+      position: fixed;
+      bottom: 10px; /* Adjust the bottom position as needed */
+      right: 10px; /* Adjust the right position as needed */
+      width: 100px; /* Control the size */
+      z-index: 1000; /* Ensure it is above other content */
+    }
+
+    .logo-container img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
     @media screen and (max-width: 528px) {
       header h1 {
         font-size: 17px;
@@ -148,6 +160,12 @@
       .projects-container ul {
         margin: 3px 0;
         text-align: center;
+      }
+
+      .logo-container {
+        width: 80px; /* Adjust size for smaller screens */
+        bottom: 5px; /* Adjust the bottom position for smaller screens */
+        right: 5px; /* Adjust the right position for smaller screens */
       }
     }
   </style>
@@ -186,6 +204,10 @@
   <footer>
     <p>&copy; Bartho Hartjes 2024</p>
   </footer>
+
+  <div class="logo-container">
+    <img src="trinity-web.png" alt="Logo">
+  </div>
 </body>
 
 </html>
