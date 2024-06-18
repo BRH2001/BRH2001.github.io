@@ -7,7 +7,6 @@ from kivy.uix.textinput import TextInput
 from kivy.clock import Clock
 from kivy.uix.dropdown import DropDown
 
-
 class SpanishCharactersMenu(DropDown):
     def __init__(self, input_field, **kwargs):
         super().__init__(**kwargs)
@@ -24,7 +23,6 @@ class SpanishCharactersMenu(DropDown):
     def insert_character(self, char):
         self.input_field.insert_text(char)
         self.dismiss()
-
 
 class WordQuizScreen(Screen):
     def __init__(self, **kwargs):
@@ -219,7 +217,7 @@ class MainMenuScreen(Screen):
 
         # Bind button actions
         word_quiz_button.bind(on_press=self.go_to_word_quiz)
-        sentence_translate_button.bind        (on_press=self.go_to_sentence_translate)
+        sentence_translate_button.bind(on_press=self.go_to_sentence_translate)
 
         # Add buttons to layout
         layout.add_widget(word_quiz_button)
@@ -232,7 +230,7 @@ class MainMenuScreen(Screen):
         self.manager.current = 'sentence_translate'
 
 
-class LanguageLearningApp(App):
+class Español_fácilApp(App):
     def build(self):
         screen_manager = ScreenManager()
 
@@ -247,5 +245,4 @@ class LanguageLearningApp(App):
 
 
 if __name__ == '__main__':
-    LanguageLearningApp().run()
-
+    Español_fácilApp().run()
