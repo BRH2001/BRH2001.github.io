@@ -28,12 +28,33 @@ class WordQuizScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.word_pairs = [
-            {'en': 'hello', 'es': 'hola'},
-            {'en': 'goodbye', 'es': 'adiós'},
-            {'en': 'thank you', 'es': 'gracias'},
-            {'en': 'water', 'es': 'agua'},
-            {'en': 'food', 'es': 'comida'}
+            {'en': 'hello', 'es': 'hola'}, {'en': 'goodbye', 'es': 'adiós'},
+            {'en': 'thank you', 'es': 'gracias'}, {'en': 'water', 'es': 'agua'},
+            {'en': 'food', 'es': 'comida'}, {'en': 'house', 'es': 'casa'},
+            {'en': 'book', 'es': 'libro'}, {'en': 'cat', 'es': 'gato'},
+            {'en': 'dog', 'es': 'perro'}, {'en': 'day', 'es': 'día'},
+            {'en': 'night', 'es': 'noche'}, {'en': 'sun', 'es': 'sol'},
+            {'en': 'moon', 'es': 'luna'}, {'en': 'star', 'es': 'estrella'},
+            {'en': 'car', 'es': 'coche'}, {'en': 'school', 'es': 'escuela'},
+            {'en': 'teacher', 'es': 'maestro'}, {'en': 'student', 'es': 'estudiante'},
+            {'en': 'friend', 'es': 'amigo'}, {'en': 'family', 'es': 'familia'},
+            {'en': 'work', 'es': 'trabajo'}, {'en': 'love', 'es': 'amor'},
+            {'en': 'life', 'es': 'vida'}, {'en': 'computer', 'es': 'computadora'},
+            {'en': 'phone', 'es': 'teléfono'}, {'en': 'city', 'es': 'ciudad'},
+            {'en': 'country', 'es': 'país'}, {'en': 'world', 'es': 'mundo'},
+            {'en': 'travel', 'es': 'viajar'}, {'en': 'music', 'es': 'música'},
+            {'en': 'movie', 'es': 'película'}, {'en': 'game', 'es': 'juego'},
+            {'en': 'sport', 'es': 'deporte'}, {'en': 'exercise', 'es': 'ejercicio'},
+            {'en': 'health', 'es': 'salud'}, {'en': 'doctor', 'es': 'doctor'},
+            {'en': 'hospital', 'es': 'hospital'}, {'en': 'school', 'es': 'escuela'},
+            {'en': 'university', 'es': 'universidad'}, {'en': 'language', 'es': 'idioma'},
+            {'en': 'culture', 'es': 'cultura'}, {'en': 'food', 'es': 'comida'},
+            {'en': 'drink', 'es': 'bebida'}, {'en': 'bread', 'es': 'pan'},
+            {'en': 'coffee', 'es': 'café'}, {'en': 'tea', 'es': 'té'},
+            {'en': 'water', 'es': 'agua'}, {'en': 'milk', 'es': 'leche'},
+            {'en': 'juice', 'es': 'jugo'}, {'en': 'breakfast', 'es': 'desayuno'}
         ]
+
         self.correct_count = 0
         self.incorrect_count = 0
         self.current_pair = None
@@ -118,15 +139,43 @@ class WordQuizScreen(Screen):
     def go_to_main_menu(self, instance):
         self.manager.current = 'main_menu'
 
-
 class SentenceTranslateScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.sentences = [
             {'es': '¿Cómo estás?', 'en_options': ['How are you?', 'What is this?', 'Where are you?'], 'en_correct': 'How are you?'},
             {'es': 'Me gusta la música.', 'en_options': ['I like music.', 'The music is loud.', 'Do you like music?'], 'en_correct': 'I like music.'},
-            {'es': 'Voy al supermercado.', 'en_options': ['I am going to the supermarket.', 'I went to the market.', 'He goes to the supermarket.'], 'en_correct': 'I am going to the supermarket.'}
+            {'es': 'Voy al supermercado.', 'en_options': ['I am going to the supermarket.', 'I went to the market.', 'He goes to the supermarket.'], 'en_correct': 'I am going to the supermarket.'},
+            {'es': 'Ella tiene un perro.', 'en_options': ['She has a dog.', 'He has a dog.', 'She has a cat.'], 'en_correct': 'She has a dog.'},
+            {'es': 'El libro es interesante.', 'en_options': ['The book is interesting.', 'The book is boring.', 'The book is old.'], 'en_correct': 'The book is interesting.'},
+            {'es': 'La casa es grande.', 'en_options': ['The house is big.', 'The house is small.', 'The house is new.'], 'en_correct': 'The house is big.'},
+            {'es': 'Tengo dos hermanos.', 'en_options': ['I have two brothers.', 'I have two sisters.', 'I have two friends.'], 'en_correct': 'I have two brothers.'},
+            {'es': 'Nos gusta viajar.', 'en_options': ['We like to travel.', 'We like to eat.', 'We like to dance.'], 'en_correct': 'We like to travel.'},
+            {'es': 'El cielo es azul.', 'en_options': ['The sky is blue.', 'The sky is cloudy.', 'The sky is red.'], 'en_correct': 'The sky is blue.'},
+            {'es': 'Hace calor hoy.', 'en_options': ['It is hot today.', 'It is cold today.', 'It is raining today.'], 'en_correct': 'It is hot today.'},
+            {'es': 'Estoy aprendiendo español.', 'en_options': ['I am learning Spanish.', 'I am learning English.', 'I am learning French.'], 'en_correct': 'I am learning Spanish.'},
+            {'es': 'Necesito descansar.', 'en_options': ['I need to rest.', 'I need to work.', 'I need to eat.'], 'en_correct': 'I need to rest.'},
+            {'es': 'Quiero una bebida.', 'en_options': ['I want a drink.', 'I want food.', 'I want sleep.'], 'en_correct': 'I want a drink.'},
+            {'es': 'Mi cumpleaños es en julio.', 'en_options': ['My birthday is in July.', 'My birthday is in June.', 'My birthday is in August.'], 'en_correct': 'My birthday is in July.'},
+            {'es': 'La película fue buena.', 'en_options': ['The movie was good.', 'The movie was bad.', 'The movie was okay.'], 'en_correct': 'The movie was good.'},
+            {'es': 'Necesito ir al baño.', 'en_options': ['I need to go to the bathroom.', 'I need to go to the kitchen.', 'I need to go to the bedroom.'], 'en_correct': 'I need to go to the bathroom.'},
+            {'es': 'El tren llega a tiempo.', 'en_options': ['The train arrives on time.', 'The train is late.', 'The train is early.'], 'en_correct': 'The train arrives on time.'},
+            {'es': 'Voy a la playa.', 'en_options': ['I am going to the beach.', 'I am going to the park.', 'I am going to the city.'], 'en_correct': 'I am going to the beach.'},
+            {'es': 'El perro está en el jardín.', 'en_options': ['The dog is in the garden.', 'The dog is in the house.', 'The dog is in the street.'], 'en_correct': 'The dog is in the garden.'},
+            {'es': 'Ella trabaja en una oficina.', 'en_options': ['She works in an office.', 'She works in a school.', 'She works in a hospital.'], 'en_correct': 'She works in an office.'},
+            {'es': 'El café está caliente.', 'en_options': ['The coffee is hot.', 'The coffee is cold.', 'The coffee is sweet.'], 'en_correct': 'The coffee is hot.'},
+            {'es': 'Mi coche es rojo.', 'en_options': ['My car is red.', 'My car is blue.', 'My car is green.'], 'en_correct': 'My car is red.'},
+            {'es': 'El niño está jugando.', 'en_options': ['The child is playing.', 'The child is sleeping.', 'The child is eating.'], 'en_correct': 'The child is playing.'},
+            {'es': 'Tengo que estudiar.', 'en_options': ['I have to study.', 'I have to work.', 'I have to sleep.'], 'en_correct': 'I have to study.'},
+            {'es': 'Me gusta leer libros.', 'en_options': ['I like to read books.', 'I like to write books.', 'I like to sell books.'], 'en_correct': 'I like to read books.'},
+            {'es': 'La comida está deliciosa.', 'en_options': ['The food is delicious.', 'The food is terrible.', 'The food is cold.'], 'en_correct': 'The food is delicious.'},
+            {'es': 'Hace frío en invierno.', 'en_options': ['It is cold in winter.', 'It is hot in winter.', 'It is raining in winter.'], 'en_correct': 'It is cold in winter.'},
+            {'es': 'La ciudad es grande.', 'en_options': ['The city is big.', 'The city is small.', 'The city is quiet.'], 'en_correct': 'The city is big.'},
+            {'es': 'Estoy feliz hoy.', 'en_options': ['I am happy today.', 'I am sad today.', 'I am tired today.'], 'en_correct': 'I am happy today.'},
+            {'es': 'El gato está durmiendo.', 'en_options': ['The cat is sleeping.', 'The cat is eating.', 'The cat is playing.'], 'en_correct': 'The cat is sleeping.'},
+            {'es': 'La puerta está cerrada.', 'en_options': ['The door is closed.', 'The door is open.', 'The door is locked.'], 'en_correct': 'The door is closed.'}
         ]
+
         self.correct_count = 0
         self.incorrect_count = 0
         self.current_sentence = None
