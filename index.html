@@ -20,7 +20,7 @@
 
     header,
     footer {
-      z-index: 3;
+      z-index: 3; /* Higher than logo */
     }
 
     header {
@@ -50,7 +50,7 @@
       flex-direction: column;
       align-items: center;
       flex-grow: 1;
-      position: relative; /* Added position relative to contain absolutely positioned elements */
+      z-index: 3; /* Higher than logo */
     }
 
     .projects,
@@ -64,8 +64,6 @@
       text-align: center;
       color: #ffffff;
       transition: transform 0.2s;
-      position: relative; /* Ensure stacking context for z-index to work */
-      z-index: 1; /* Set z-index to make sure they are above the bars */
     }
 
     .projects:hover,
@@ -114,7 +112,7 @@
       position: absolute;
       width: 100px;
       height: 100px;
-      z-index: 0; /* Lower z-index to ensure it's behind other content */
+      z-index: 1;
     }
 
     .top-left {
@@ -122,13 +120,11 @@
       left: 0;
       clip-path: polygon(0 0, calc(100% - 1px) 0, 0 calc(100% - 1px));
       background-color: #000000;
-      z-index: 2; /* Higher z-index to be above content */
     }
 
     .bottom-left,
     .top-right {
       background-color: #000000;
-      z-index: 2; /* Higher z-index to be above content */
     }
 
     .bottom-right {
@@ -136,7 +132,6 @@
       right: 0;
       clip-path: polygon(100% 100%, 0 100%, 100% 0);
       background: linear-gradient(-45deg, rgba(0, 0, 0, 0.6) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.5) 75%);
-      z-index: 2; /* Higher z-index to be above content */
     }
 
     .logo-container {
@@ -144,52 +139,15 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 639px;
-      z-index: 3; /* Higher z-index than bars */
-      pointer-events: none;
+      width: 639px; /* Control the size */
+      z-index: 2; /* Layer above background, below content */
+      pointer-events: none; /* Prevent interaction */
     }
 
     .logo-container img {
       width: 100%;
       height: auto;
       display: block;
-    }
-
-    .corner-logo {
-      position: absolute;
-      width: 100px;
-      height: 100px;
-      z-index: 4; /* Higher z-index than bars and logo container */
-      pointer-events: none;
-    }
-
-    .corner-logo img {
-      width: 100%;
-      height: auto;
-    }
-
-    .top-left-logo {
-      top: 10px; /* Adjusted position for better alignment */
-      left: 10px; /* Adjusted position for better alignment */
-      transform: translate(-50%, -50%);
-    }
-
-    .top-right-logo {
-      top: 10px; /* Adjusted position for better alignment */
-      right: 10px; /* Adjusted position for better alignment */
-      transform: translate(50%, -50%);
-    }
-
-    .bottom-left-logo {
-      bottom: 10px; /* Adjusted position for better alignment */
-      left: 10px; /* Adjusted position for better alignment */
-      transform: translate(-50%, 50%);
-    }
-
-    .bottom-right-logo {
-      bottom: 10px; /* Adjusted position for better alignment */
-      right: 10px; /* Adjusted position for better alignment */
-      transform: translate(50%, 50%);
     }
 
     @media screen and (max-width: 528px) {
@@ -213,7 +171,7 @@
 
       .logo-container {
         width: 80%;
-        padding: 10px;
+        padding: 10px; /* Adjust padding for smaller screens */
       }
     }
   </style>
@@ -224,8 +182,6 @@
     <h1>Welkom bij mijn portfolio!</h1>
   </header>
   <div class="container">
-    <div class="corner-rectangle top-left"></div>
-    <div class="corner-rectangle bottom-left"></div>
     <section class="projects">
       <h2>Projecten</h2>
       <div class="projects-container">
@@ -249,13 +205,12 @@
     <section class="about">
       <h2>Over mij</h2>
       <p>Ik ben 23 jaar oud en gepassioneerd over softwareontwikkeling.</p>
-      <p>Ik studeer aan het Rea College in Groningen, waar ik me specialiseer in het bouwen van innovatieve en gebruiksvriendelijke applicaties.</p>
+      <p>Ik studeer aan het Rea College in Groningen, waar ik me specialiseer in het bouwen van innovatieve en gebruiksvriendelijke applicaties. 
       <p>Mijn doel is om een ervaren applicatieontwikkelaar te worden.</p>
       <p>Ik streef ernaar om zo veel mogelijk te groeien en te leren. Aldus werk ik aan verschillende projecten om mijn vaardigheden te verbeteren en nieuwe technologieën te verkennen.</p>
       <p>Deze site biedt een glimp van recente projecten en mijn creatieve benadering van softwareontwikkeling.</p>
       <p>Ik ben enthousiast over de toekomst van technologie en de impact die we kunnen hebben door middel van innovatie.</p>
     </section>
-    <div class="corner-rectangle bottom-right"></div>
   </div>
   <footer>
     <p>&copy; Bartho Hartjes 2024</p>
@@ -263,20 +218,6 @@
 
   <div class="logo-container">
     <img src="trinity-web.png" alt="Logo">
-  </div>
-
-  <!-- New Logo Containers -->
-  <div class="corner-logo top-left-logo">
-    <img src="trinity3.png" alt="Top Left Logo">
-  </div>
-  <div class="corner-logo top-right-logo">
-    <img src="trinity3.png" alt="Top Right Logo">
-  </div>
-  <div class="corner-logo bottom-left-logo">
-    <img src="trinity3.png" alt="Bottom Left Logo">
-  </div>
-  <div class="corner-logo bottom-right-logo">
-    <img src="trinity3.png" alt="Bottom Right Logo">
   </div>
 </body>
 
