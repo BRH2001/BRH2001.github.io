@@ -172,7 +172,7 @@ class SentenceTranslateScreen(Screen):
 
         self.generate_question()
 
-    def generate_question(self):
+    def generate_question(self): 
         self.layout.clear_widgets()
         if self.sentences:
             self.current_sentence = self.sentences.pop(0)

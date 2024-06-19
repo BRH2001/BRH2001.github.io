@@ -20,7 +20,7 @@
 
     header,
     footer {
-      z-index: 3; /* Higher than logo */
+      z-index: 3;
     }
 
     header {
@@ -50,7 +50,7 @@
       flex-direction: column;
       align-items: center;
       flex-grow: 1;
-      z-index: 3; /* Higher than logo */
+      z-index: 3;
     }
 
     .projects,
@@ -139,15 +139,52 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 639px; /* Control the size */
-      z-index: 2; /* Layer above background, below content */
-      pointer-events: none; /* Prevent interaction */
+      width: 639px;
+      z-index: 2;
+      pointer-events: none;
     }
 
     .logo-container img {
       width: 100%;
       height: auto;
       display: block;
+    }
+
+    .corner-logo {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .corner-logo img {
+      width: 100%;
+      height: auto;
+    }
+
+    .top-left-logo {
+      top: 0;
+      left: 0;
+      transform: translate(-50%, -50%);
+    }
+
+    .top-right-logo {
+      top: 0;
+      right: 0;
+      transform: translate(50%, -50%);
+    }
+
+    .bottom-left-logo {
+      bottom: 0;
+      left: 0;
+      transform: translate(-50%, 50%);
+    }
+
+    .bottom-right-logo {
+      bottom: 0;
+      right: 0;
+      transform: translate(50%, 50%);
     }
 
     @media screen and (max-width: 528px) {
@@ -171,7 +208,7 @@
 
       .logo-container {
         width: 80%;
-        padding: 10px; /* Adjust padding for smaller screens */
+        padding: 10px;
       }
     }
   </style>
@@ -218,6 +255,20 @@
 
   <div class="logo-container">
     <img src="trinity-web.png" alt="Logo">
+  </div>
+
+  <!-- New Logo Containers -->
+  <div class="corner-logo top-left-logo">
+    <img src="trinity3.png" alt="Top Left Logo">
+  </div>
+  <div class="corner-logo top-right-logo">
+    <img src="trinity3.png" alt="Top Right Logo">
+  </div>
+  <div class="corner-logo bottom-left-logo">
+    <img src="trinity3.png" alt="Bottom Left Logo">
+  </div>
+  <div class="corner-logo bottom-right-logo">
+    <img src="trinity3.png" alt="Bottom Right Logo">
   </div>
 </body>
 
