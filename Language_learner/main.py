@@ -56,7 +56,7 @@ class WordQuizScreen(Screen):
             {'en': 'juice', 'es': 'jugo'}, {'en': 'breakfast', 'es': 'desayuno'}
         ]
 
-        random.shuffle(self.word_pairs)  # Randomize the order of word pairs
+        random.shuffle(self.word_pairs)  
 
         self.correct_count = 0
         self.incorrect_count = 0
