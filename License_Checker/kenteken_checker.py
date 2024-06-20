@@ -20,7 +20,11 @@ def fetch_vehicle_data():
             if data and 'value' in data and data['value']:
                 global vehicle_data
                 vehicle_data = data['value'][0]
-                display_filter_options()
+                result_text.config(state=tk.NORMAL)
+                result_text.delete(1.0, tk.END)
+                result_text.config(state=tk.DISABLED)
+                display_filter_options()  # Reset filter options
+                apply_filter("Alles zien")  # Automatically show all data initially
             else:
                 result_text.config(text="Geen data gevonden voor dit kenteken.")
         except requests.exceptions.RequestException as e:
@@ -39,7 +43,7 @@ def display_filter_options():
     for i, option in enumerate(filter_options):
         padx_left = (5 if i != 0 else 120, 5)
         padx_right = (5, 120 if i != 3 else 5)
-        filter_button = tk.Button(root, text=option, command=lambda op=option: apply_filter(op))
+        filter_button = tk.Button(root, text=option, command=lambda op=option: apply_filter(op), bg='black', fg='white')
         filter_button.grid(row=3, column=i, padx=padx_left, pady=5, sticky="ew")
 
 def apply_filter(option):
@@ -54,16 +58,46 @@ def apply_filter(option):
 def display_filtered_data(option):
     filter_text = ""
     relevant_data = filter_mapping[option]
-    for label, key in relevant_data.items():
-        if key in vehicle_data:
-            # Remove the time part from date fields
-            value = vehicle_data[key]
-            if "datum" in key:
-                value = format_date(value)
-            else:
-                value = format_value(key, value)
-            filter_text += f"{label}: {value}\n"
-    result_text.config(text=filter_text)
+    filtered_data = {label: vehicle_data.get(key, "N/A") for label, key in relevant_data.items()}
+    
+    # Split data into two columns
+    half = len(filtered_data) // 2
+    left_data = list(filtered_data.items())[:half]
+    right_data = list(filtered_data.items())[half:]
+    
+    left_text = "\n".join(f"{label}: {format_value(label, value)}" for label, value in left_data)
+    right_text = "\n".join(f"{label}: {format_value(label, value)}" for label, value in right_data)
+
+    filter_text = f"{left_text}\n\n{right_text}"
+    result_text.config(state=tk.NORMAL)
+    result_text.delete(1.0, tk.END)
+    result_text.insert(tk.END, filter_text)
+    result_text.config(state=tk.DISABLED)
+
+def display_vehicle_data(data):
+    filtered_data = {
+        key: format_value(key, value) if key in value_format_mapping else value
+        for key, value in data.items()
+        if key not in ["__id", "typegoedkeuringsnummer", "volgnummer_wijziging_eu_typegoedkeuring", "code_toelichting_tellerstandoordeel"]
+        and not key.startswith("api_")
+    }
+    # Format license plate number with hyphens
+    if 'kenteken' in filtered_data:
+        filtered_data['kenteken'] = format_license_plate(filtered_data['kenteken'])
+
+    # Split data into two columns
+    half = len(filtered_data) // 2
+    left_data = list(filtered_data.items())[:half]
+    right_data = list(filtered_data.items())[half:]
+    
+    left_text = "\n".join(f"{key}: {value}" for key, value in left_data)
+    right_text = "\n".join(f"{key}: {value}" for key, value in right_data)
+
+    filter_text = f"{left_text}\n\n{right_text}"
+    result_text.config(state=tk.NORMAL)
+    result_text.delete(1.0, tk.END)
+    result_text.insert(tk.END, filter_text)
+    result_text.config(state=tk.DISABLED)
 
 def format_date(date_str):
     if date_str and "T" in date_str:
@@ -76,22 +110,6 @@ def format_date(date_str):
             return date_str
     else:
         return date_str
-
-def display_vehicle_data(data):
-    filtered_data = {
-        key: format_value(key, value) if key in value_format_mapping else value
-        for key, value in data.items()
-        if key not in ["typegoedkeuringsnummer", "volgnummer_wijziging_eu_typegoedkeuring", "code_toelichting_tellerstandoordeel"]
-        and not key.startswith("api_")
-    }
-    # Format license plate number with hyphens
-    if 'kenteken' in filtered_data:
-        filtered_data['kenteken'] = format_license_plate(filtered_data['kenteken'])
-
-    filter_text = ""
-    for key, value in filtered_data.items():
-        filter_text += f"{key}: {value}\n"
-    result_text.config(text=filter_text)
 
 def format_license_plate(license_plate):
     # Ensure the license plate is in the correct format
@@ -135,7 +153,7 @@ fetch_button = tk.Button(root, text="Zie voertuig data:", command=fetch_vehicle_
 fetch_button.grid(row=1, column=0, columnspan=2, pady=5)
 
 # Text widget to display results
-result_text = tk.Label(root, text="", justify="left", fg='white', bg='black')
+result_text = tk.Text(root, wrap=tk.WORD, height=20, width=80, fg='white', bg='black', state=tk.DISABLED)
 result_text.grid(row=2, column=0, columnspan=2, padx=10, pady=5)
 
 # Label for filter options
@@ -165,39 +183,51 @@ filter_mapping = {
         "Maximum trekken massa geremd": "maximum_trekken_massa_geremd",
         "Lengte": "lengte",
         "Breedte": "breedte",
-        "Wielbasis": "wielbasis",
-        "Technische maximum massa voertuig": "technische_max_massa_voertuig",
-        "Variant": "variant",
-        "Uitvoering": "uitvoering",
-        "Vermogen massarijklaar": "vermogen_massarijklaar",
-        "Aantal wielen": "aantal_wielen"
-    },
-    "Datums": {
-        "Vervaldatum apk": "vervaldatum_apk_dt",
-        "Datum tenaamstelling": "datum_tenaamstelling_dt",
-        "Datum eerste toelating": "datum_eerste_toelating_dt",
-        "Datum eerste tenaamstelling in Nederland": "datum_eerste_tenaamstelling_in_nederland_dt"
+        "Wielbasis": "wielbasis"
     },
     "Aanvullende data": {
-        "Bruto BPM": "bruto_bpm",
-        "Plaats chassisnummer": "plaats_chassisnummer",
-        "Europese voertuigcategorie toevoeging": "europese_voertuigcategorie_toevoeging",
-        "Europese uitvoeringcategorie toevoeging": "europese_uitvoeringcategorie_toevoeging",
-        "Vervaldatum tachograaf": "vervaldatum_tachograaf_dt",
-        "Api geng": "api_geng",
-        "Api remmen": "api_remmen",
-        "Zuinigheidsclassificatie": "zuinigheidsclassificatie",
-        "WAM verzekerd": "wam_verzekerd",
-        "Maximale constructiesnelheid brom/snorfiets": "maximale_constructiesnelheid_brom_snorfiets",
-        "Laadvermogen": "laadvermogen",
-        "Oplegger geremd": "oplegger_geremd",
-        "Oplegger ongeremd": "oplegger_ongeremd",
-        "Taxi indicator": "taxi_indicator",
-        "Maximum massa samenstelling": "maximum_massa_samenstelling",
+        "Datum eerste toelating": "datum_eerste_toelating",
+        "Datum eerste afgifte nederland": "datum_eerste_afgifte_nederland",
+        "Bruto bpm": "bruto_bpm",
+        "Inrichting": "inrichting",
+        "Aantal deuren": "aantal_deuren",
+        "Aantal wielen": "aantal_wielen",
+        "Aantal zitplaatsen": "aantal_zitplaatsen",
+        "Catalogusprijs": "catalogusprijs",
+        "Datum eerste afgifte nederland": "datum_eerste_afgifte_nederland",
+        "Vermogen massarijklaar": "vermogen_massarijklaar",
+        "Toegestane maximum massa voertuig": "toegestane_maximum_massa_voertuig",
+        "BPM bedrag": "bpm_bedrag",
+        "Eerste kleur": "eerste_kleur",
+        "Tweede kleur": "tweede_kleur",
+        "Aantal cilinders": "aantal_cilinders",
+        "Cilinderinhoud": "cilinderinhoud",
+        "Massa ledig voertuig": "massa_ledig_voertuig",
+        "Massa rijklaar": "massa_rijklaar",
+        "Maximum massa trekken ongeremd": "maximum_massa_trekken_ongeremd",
+        "Maximum trekken massa geremd": "maximum_trekken_massa_geremd",
+        "Technische max massa voertuig": "technische_max_massa_voertuig",
         "Type": "type",
-        "Type gasinstallatie": "type_gasinstallatie"
+        "Wielbasis": "wielbasis"
+    },
+    "Datums": {
+        "Datum eerste toelating": "datum_eerste_toelating",
+        "Datum eerste afgifte nederland": "datum_eerste_afgifte_nederland",
+        "Vervaldatum apk": "vervaldatum_apk",
+        "Datum tenaamstelling": "datum_tenaamstelling",
+        "Eerste kleur": "eerste_kleur",
+        "Tweede kleur": "tweede_kleur",
+        "BPM bedrag": "bpm_bedrag",
+        "Bruto bpm": "bruto_bpm",
+        "Massa rijklaar": "massa_rijklaar",
+        "Massa ledig voertuig": "massa_ledig_voertuig",
+        "Maximum massa trekken ongeremd": "maximum_massa_trekken_ongeremd",
+        "Maximum trekken massa geremd": "maximum_trekken_massa_geremd",
+        "Technische max massa voertuig": "technische_max_massa_voertuig",
+        "Type": "type",
+        "Wielbasis": "wielbasis"
     }
 }
 
-# Start the Tkinter event loop
+# Start the Tkinter main loop
 root.mainloop()
