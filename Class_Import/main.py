@@ -26,12 +26,12 @@ class HoofdMenuUI:
         # Buttons
         button_frame = tk.Frame(self.frame, bg="#000000")
         button_frame.pack()
-
-        self.calculator_button = tk.Button(button_frame, text="Rekenmachine", command=self.run_calculator, font=("Arial", font_size), bg="#808080", fg="#FFFFFF")
-        self.calculator_button.pack(pady=5)
-
-        self.text_editor_button = tk.Button(button_frame, text="TekstBewerker", command=self.run_text_editor, font=("Arial", font_size), bg="#808080", fg="#FFFFFF")
+        
+        self.text_editor_button = tk.Button(button_frame, text="Tekst Bewerker", command=self.run_text_editor, font=("Arial", font_size), bg="#808080", fg="#FFFFFF")
         self.text_editor_button.pack(pady=5)
+
+        self.calculator_button = tk.Button(button_frame, text="Reken Machine", command=self.run_calculator, font=("Arial", font_size), bg="#808080", fg="#FFFFFF")
+        self.calculator_button.pack(pady=5)
 
         self.palindrome_button = tk.Button(button_frame, text="Palindroom Controle", command=self.run_palindrome, font=("Arial", font_size), bg="#808080", fg="#FFFFFF")
         self.palindrome_button.pack(pady=5)
@@ -40,13 +40,13 @@ class HoofdMenuUI:
         self.exit_button.pack(pady=5)
 
     def run_palindrome(self):
-        self.run_program("PalindroomControle.py")
+        self.run_program("Palindroom-Controle.py")
 
     def run_calculator(self):
-        self.run_program("RekenMachine.py")
+        self.run_program("reken-machine.py")
 
     def run_text_editor(self):
-        self.run_program("TekstBewerker.py")
+        self.run_program("tekst-bewerker.py")
 
     def run_program(self, program_file):
         try:

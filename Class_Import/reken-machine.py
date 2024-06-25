@@ -36,7 +36,7 @@ class CalculatorUI:
 
         self.root = tk.Tk()
         self.root.title("Rekenmachine")
-        self.root.geometry("400x150")
+        self.root.geometry("693x150")
 
         style = ttk.Style()
         style.configure("TFrame", background="#000000")

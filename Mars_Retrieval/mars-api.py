@@ -3,7 +3,8 @@ from tkinter import ttk
 from PIL import Image, ImageTk
 import io
 from tkcalendar import DateEntry
-import threading
+import asyncio
+import aiohttp
 from tkinter import filedialog
 import requests
 
@@ -94,7 +95,7 @@ class MarsRoverPhotoViewer(tk.Tk):
 
         self.geometry(f"800x600+{x}+{y}")
 
-    def fetch_photos(self, rover, sol, camera="all", page=1):
+    async def fetch_photos(self, session, rover, sol, camera="all", page=1):
         url = f"https://api.nasa.gov/mars-photos/api/v1/rovers/{rover}/photos"
         params = {
             "api_key": self.api_key,
@@ -102,9 +103,9 @@ class MarsRoverPhotoViewer(tk.Tk):
             "camera": camera,
             "page": page
         }
-        response = requests.get(url, params=params)
-        data = response.json()
-        return data["photos"] if "photos" in data else []
+        async with session.get(url, params=params) as response:
+            data = await response.json()
+            return data["photos"] if "photos" in data else []
 
     def display_photos(self):
         if not self.photos:
@@ -151,42 +152,53 @@ class MarsRoverPhotoViewer(tk.Tk):
         self.fetch_button.pack_forget()  
         self.loading_label = ttk.Label(self, text="Loading..", style="Loading.TLabel")
         self.loading_label.pack(anchor="center", padx=10, pady=(5, 0))
-        threading.Thread(target=self.fetch_photos_async).start()
-
-    def fetch_photos_async(self):
-        try:
-            selected_date = self.date_entry.get()
-            selected_rover = self.rover_combobox.get()
-            selected_camera = self.camera_combobox.get()
-            
-            if selected_rover == "all":
-                rovers = ["curiosity", "opportunity", "spirit"]
-            else:
-                rovers = [selected_rover]
-            
-            if selected_camera == "all":
-                cameras = ["FHAZ", "RHAZ", "NAVCAM", "MAST", "CHEMCAM", "MAHLI", "MARDI", "PANCAM", "MINITES"]
-            else:
-                cameras = [selected_camera]
-            
-            self.photos = []
-            total_requests = len(rovers) * len(cameras)
-            current_request = 0
-            
-            for rover in rovers:
-                for camera in cameras:
-                    current_request += 1
-                    progress_value = int((current_request / total_requests) * 100)
-                    self.loading_label.config(text=f"Loading... {progress_value}%", foreground="black")
-                    self.update_idletasks()
-                    self.photos.extend(self.fetch_photos(rover, selected_date, camera))
-            
-            self.display_photos()
-            self.loading_label.pack_forget()  
-            self.fetch_button.pack(anchor="center", padx=10, pady=(5, 0))
-            
-        except Exception as e:
-            print("An error occurred:", str(e))
+        
+        selected_date = self.date_entry.get()
+        selected_rover = self.rover_combobox.get()
+        selected_camera = self.camera_combobox.get()
+        
+        # Clear previous photos
+        self.photos = []
+        
+        if selected_rover == "all":
+            rovers = ["curiosity", "opportunity", "spirit"]
+        else:
+            rovers = [selected_rover]
+        
+        if selected_camera == "all":
+            cameras = ["FHAZ", "RHAZ", "NAVCAM", "MAST", "CHEMCAM", "MAHLI", "MARDI", "PANCAM", "MINITES"]
+        else:
+            cameras = [selected_camera]
+        
+        total_requests = len(rovers) * len(cameras)
+        current_request = 0
+        
+        async def fetch_and_append_photos(session, rover, selected_date, camera):
+            nonlocal current_request
+            try:
+                photos = await self.fetch_photos(session, rover, selected_date, camera)
+                self.photos.extend(photos)
+            except Exception as e:
+                print(f"Error fetching photos for {rover}, {camera}: {str(e)}")
+            finally:
+                current_request += 1
+                progress_value = int((current_request / total_requests) * 100)
+                self.loading_label.config(text=f"Loading... {progress_value}%", foreground="black")
+                self.update_idletasks()
+        
+        async def fetch_all():
+            async with aiohttp.ClientSession() as session:
+                tasks = []
+                for rover in rovers:
+                    for camera in cameras:
+                        tasks.append(fetch_and_append_photos(session, rover, selected_date, camera))
+                await asyncio.gather(*tasks)
+        
+        asyncio.run(fetch_all())
+        
+        self.display_photos()
+        self.loading_label.pack_forget()  
+        self.fetch_button.pack(anchor="center", padx=10, pady=(5, 0))
 
     def on_update_camera_options(self, event):
         selected_rover = self.rover_combobox.get()
