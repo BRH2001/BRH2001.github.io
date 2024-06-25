@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 import subprocess
+import os
 
 class HoofdMenuUI:
     def __init__(self):
@@ -26,27 +27,38 @@ class HoofdMenuUI:
         # Buttons
         button_frame = tk.Frame(self.frame, bg="#000000")
         button_frame.pack()
-        
-        self.text_editor_button = tk.Button(button_frame, text="Tekst Bewerker", command=self.run_text_editor, font=("Arial", font_size), bg="#808080", fg="#FFFFFF")
-        self.text_editor_button.pack(pady=5)
 
-        self.calculator_button = tk.Button(button_frame, text="Reken Machine", command=self.run_calculator, font=("Arial", font_size), bg="#808080", fg="#FFFFFF")
-        self.calculator_button.pack(pady=5)
+        # Search for script files in current directory and its parent directories
+        self.script_paths = self.find_script_files()
 
-        self.palindrome_button = tk.Button(button_frame, text="Palindroom Controle", command=self.run_palindrome, font=("Arial", font_size), bg="#808080", fg="#FFFFFF")
-        self.palindrome_button.pack(pady=5)
+        # Create buttons dynamically based on found scripts
+        for script, script_path in self.script_paths.items():
+            button = tk.Button(button_frame, text=script, command=lambda path=script_path: self.run_program(path),
+                               font=("Arial", font_size), bg="#808080", fg="#FFFFFF")
+            button.pack(pady=5)
 
-        self.exit_button = tk.Button(button_frame, text="Afsluiten", command=self.root.quit, font=("Arial", font_size), bg="#808080", fg="#FFFFFF")
+        self.exit_button = tk.Button(button_frame, text="Afsluiten", command=self.root.quit,
+                                     font=("Arial", font_size), bg="#808080", fg="#FFFFFF")
         self.exit_button.pack(pady=5)
 
-    def run_palindrome(self):
-        self.run_program("Palindroom-Controle.py")
+    def find_script_files(self):
+        script_files = {
+            "Tekst Bewerker": self.find_file_in_directory("tekst-bewerker.py"),
+            "Reken Machine": self.find_file_in_directory("reken-machine.py"),
+            "Palindroom Controle": self.find_file_in_directory("Palindroom-Controle.py")
+        }
+        return {key: value for key, value in script_files.items() if value is not None}
 
-    def run_calculator(self):
-        self.run_program("reken-machine.py")
-
-    def run_text_editor(self):
-        self.run_program("tekst-bewerker.py")
+    def find_file_in_directory(self, filename):
+        current_dir = os.path.abspath(os.path.dirname(__file__))
+        # Check current directory and its parent directories
+        while current_dir:
+            file_path = os.path.join(current_dir, filename)
+            if os.path.isfile(file_path):
+                return file_path
+            # Move to the parent directory
+            current_dir = os.path.dirname(current_dir)
+        return None
 
     def run_program(self, program_file):
         try:
