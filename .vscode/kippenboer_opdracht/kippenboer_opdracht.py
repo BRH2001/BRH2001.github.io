@@ -49,7 +49,7 @@ receipt = f"""
 Totaal geproduceerde eieren: {total_eggs}
 Volle doosjes: {full_boxes} x €{PRICE_PER_BOX} = €{full_boxes * PRICE_PER_BOX:.2f}
 Statiegeld voor doosjes: {full_boxes} x €{DEPOSIT_PER_BOX} = €{full_boxes * DEPOSIT_PER_BOX:.2f}
-Overgebleven eieren: {leftover_eggs} x €{PRICE_PER_EGG} = €{leftover_eggs * PRICE_PER_EGG:.2f}
+Overgebleven eieren: {leftover_eggs} x €{PRICE_PER_EGG} = €{leftover_eggs * PRICE_PER_EGG:.2f} 
 --------------------------
 Totaal verkoopprijs: €{max_revenue:.2f}
 --------------------------
