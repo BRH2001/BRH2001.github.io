@@ -1,16 +1,19 @@
+============================
+   Omzet Berekening
+============================
+Datum: 02-07-2024
+Week: 22
+Totaal geproduceerde eieren: 12380
+Volle doosjes: 1031 x â‚¬6.00 = â‚¬6186.00
+Statiegeld voor doosjes: 1031 x â‚¬1.00 = â‚¬1031.00
+Overgebleven eieren: 8 x â‚¬1.00 = â‚¬8.00
+Totaal verkoopprijs: â‚¬7225.00
 
-==========================
-      Kassabon Week 22
-==========================
-Totaal geproduceerde eieren: 12315
-Volle doosjes: 1026 x €6.0 = €6156.00
-Statiegeld voor doosjes: 1026 x €1.0 = €1026.00
-Overgebleven eieren: 3 x €1.0 = €3.00
---------------------------
-Totaal verkoopprijs: €7185.00
---------------------------
-Uurloon: 13 uur x €3.50 = €45.50
-Bonus eieren: 10 x €1.00 = €10.00
---------------------------
-Totale verdiensten: €55.50
-==========================
+============================
+   Mijn Loon Berekening
+============================
+Datum: 02-07-2024
+Week: 22
+Uurloon: 13 uur x â‚¬3.50 = â‚¬45.50
+Bonus eieren: 10 x â‚¬1.00 = â‚¬10.00
+Totale verdiensten: â‚¬55.50
