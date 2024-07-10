@@ -129,7 +129,7 @@ week_entry = tk.Entry(root, bg=entry_bg_color, fg=fg_color, insertbackground=fg_
 week_entry.grid(row=0, column=0, columnspan=2, pady=10)
 
 # Active Chickens Input
-tk.Label(root, text="Actieve Kippen:", bg=bg_color, fg=fg_color).grid(row=1, column=0, padx=10, pady=5, sticky='w')
+tk.Label(root, text="Actieve Kippen: (Tussen 2450-2525)", bg=bg_color, fg=fg_color).grid(row=1, column=0, padx=10, pady=5, sticky='w')
 chickens_entry = tk.Entry(root, bg=entry_bg_color, fg=fg_color, insertbackground=fg_color)
 chickens_entry.grid(row=1, column=0, columnspan=2, pady=10)
 
