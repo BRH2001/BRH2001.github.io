@@ -114,7 +114,7 @@ def calculate_receipt():
 
 # GUI Setup
 root = tk.Tk()
-root.title("Egg Production Calculator")
+root.title("Ei productie rekenmachine")
 
 # Set background color
 bg_color = "#000000"  # Black background
