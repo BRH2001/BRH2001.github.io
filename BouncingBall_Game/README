@@ -1,0 +1,68 @@
+README - Bouncing ball game
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Inleiding
+Welkom bij de Pygame Brick Breaker! Dit project is een eenvoudig maar boeiend brick breaker-spel, gebouwd met behulp van de Pygame-bibliotheek. Het spel omvat het besturen van een paddle om een bal te laten stuiteren en bakstenen te breken. Het spel bevat functies zoals een hoofdmenu, pauzemenu, game over-scherm en score bijhouden.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Functies
+Interactieve Visualisaties: Bekijk het bakstenen breken in real-time met visuele representaties.
+Meerdere Moeilijkheidsgraden: Ondersteuning voor verschillende moeilijkheidsgraden met verschillende baksteenlayouts.
+Educatieve Tool: Ontworpen om het begrip van fysica en spelmechanica te verbeteren door middel van visuele en interactieve leermiddelen.
+Aanpasbare Snelheid: Pas de snelheid van de bal aan om het spel uitdagender te maken.
+Gebruikersvriendelijke Interface: Eenvoudige en intuïtieve interface voor een optimale speelervaring.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Hoe te Gebruiken
+Installeer Python: Zorg ervoor dat Python op uw systeem is geïnstalleerd.
+Kloon de Repository: Kloon deze repository naar uw lokale machine.
+Navigeer naar de Projectdirectory: Open een terminal en navigeer naar de projectdirectory.
+Installeer Afhankelijkheden: Voer het volgende commando uit om de vereiste afhankelijkheden te installeren:
+pip install -r requirements.txt
+Start de Applicatie: Voer het script uit door te runnen:
+python main.py
+Speel het Spel: Gebruik de pijltjestoetsen om de paddle te bewegen en de bal te laten stuiteren. Probeer alle bakstenen te breken zonder de bal te laten vallen.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Gebruikte Technologieën
+Python: De kernprogrammeertaal die is gebruikt voor ontwikkeling.
+Pygame: Een bibliotheek voor het maken van videogames in Python.
+Sys: Een Python-module die verschillende functies biedt om te communiceren met de interpreter.
+Os: Een Python-module die een manier biedt om met het besturingssysteem te werken.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Nawoord
+Dank aan de ontwikkelaars en de community achter Python en Pygame voor het verstrekken van de tools om dit spel te creëren. Geniet van het spelen en verbeteren van je vaardigheden!
+Voel je vrij om contact op te nemen bij vragen of feedback!
+
+Veel plezier met het spelen van Pygame Brick Breaker! 🎮🧱
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+README - Bouncing ball game (English)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Introduction
+Welcome to the Pygame Brick Breaker! This project is a simple yet engaging brick breaker game built using the Pygame library. The game involves controlling a paddle to bounce a ball and break bricks. It includes features like a main menu, pause menu, game over screen, and score tracking.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Features
+Interactive Visualizations: Watch the brick-breaking process in real-time with visual representations.
+Multiple Difficulty Levels: Support for various difficulty levels with different brick layouts.
+Educational Tool: Designed to improve understanding of physics and game mechanics through visual and interactive learning aids.
+Adjustable Speed: Modify the ball speed to make the game more challenging.
+User-Friendly Interface: Simple and intuitive interface for an optimal gaming experience.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+How to Use
+Install Python: Ensure you have Python installed on your system.
+Clone Repository: Clone this repository to your local machine.
+Navigate to Directory: Open a terminal and navigate to the project directory.
+Install Dependencies: Run the following command to install the required dependencies:
+pip install -r requirements.txt
+Launch Application: Execute the script by running:
+python main.py
+Play the Game: Use the arrow keys to move the paddle and bounce the ball. Try to break all the bricks without letting the ball fall.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Technologies Used
+Python: The core programming language used for development.
+Pygame: A library for making video games in Python.
+Sys: A Python module that provides access to some variables used or maintained by the interpreter.
+Os: A Python module that provides a way of using operating system dependent functionality.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Acknowledgments
+Special thanks to the developers and community behind Python and Pygame for providing the tools to create this game. Enjoy playing and improving your skills!
+Feel free to reach out with any questions or feedback!
+
+Have fun playing Pygame Brick Breaker! 🎮🧱

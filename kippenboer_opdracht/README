@@ -1,0 +1,76 @@
+README - Ei Productie Rekenmachine
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Inleiding
+De Ei Productie Rekenmachine is een Python-toepassing die gebruikers helpt bij het berekenen van hun inkomsten en verkoop uit de productie van eieren op basis van het aantal actieve kippen. Deze toepassing maakt gebruik van de Tkinter-bibliotheek voor de GUI en verschillende andere bibliotheken voor functionaliteit.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Functies
+Omzet Berekening: Bereken de totale verkoopprijs van de geproduceerde eieren.
+Loon Berekening: Bereken het loon op basis van de geproduceerde eieren en de verwerkte uren.
+QR Code Generatie: Genereer een QR-code voor een vereenvoudigde kassabon.
+Bon Opslaan: Sla de gedetailleerde kassabon op als een tekstbestand.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Hoe te Gebruiken
+Installeer Python: Zorg ervoor dat Python op uw systeem is geïnstalleerd.
+Kloon de Repository: Kloon deze repository naar uw lokale machine.
+Navigeer naar de Projectdirectory: Open een terminal en navigeer naar de projectdirectory.
+Installeer Afhankelijkheden: Voer het volgende commando uit om de vereiste afhankelijkheden te installeren:
+pip install -r requirements.txt
+Start de Applicatie: Voer het script uit door te runnen:
+python main.py
+Voer Gegevens In: Voer het weeknummer en het aantal actieve kippen in.
+Bereken Omzet en Loon: Klik op de knop "Bereken Omzet en Loon" om de resultaten te zien.
+Bekijk Kassabon: Bekijk de kassabon in het tekstgebied en scan de QR-code voor een vereenvoudigde versie.
+Sla de Kassabon op: De gedetailleerde kassabon wordt opgeslagen als een tekstbestand in de projectdirectory.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Gebruikte Technologieën
+Python: De kernprogrammeertaal die is gebruikt voor ontwikkeling.
+Tkinter: Een standaard GUI-bibliotheek voor Python.
+qrcode: Een Python-bibliotheek voor het genereren van QR-codes.
+Pillow (PIL): Een Python Imaging Library (PIL Fork) die extra functionaliteit biedt voor het openen, manipuleren en opslaan van vele verschillende afbeeldingsbestandsformaten.
+datetime: Een module voor het werken met datums en tijden.
+math: Een module die wiskundige functies biedt.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Nawoord
+Dank aan de ontwikkelaars en de community achter Python en de gebruikte bibliotheken voor het verstrekken van de tools om deze toepassing te creëren. Geniet van het gebruik van de Ei Productie Rekenmachine!
+Neem gerust contact met me op bij vragen of feedback!
+
+Veel succes met de berekeningen! 🥚📈
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+README - Egg Production Calculator
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Introduction
+The Egg Production Calculator is a Python application designed to help users calculate their earnings and sales from egg production based on the number of active chickens. This application uses the Tkinter library for the GUI and several other libraries for functionality.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Features
+Sales Calculation: Calculate the total sales price of the produced eggs.
+Wage Calculation: Calculate the wage based on the produced eggs and processing hours.
+QR Code Generation: Generate a QR code for a simplified receipt.
+Save Receipt: Save the detailed receipt as a text file.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+How to Use
+Install Python: Ensure you have Python installed on your system.
+Clone Repository: Clone this repository to your local machine.
+Navigate to Directory: Open a terminal and navigate to the project directory.
+Install Dependencies: Run the following command to install the required dependencies:
+pip install -r requirements.txt
+Launch Application: Execute the script by running:
+python main.py
+Enter Data: Input the week number and the number of active chickens.
+Calculate Sales and Wage: Click the "Bereken Omzet en Loon" button to see the results.
+View Receipt: View the receipt in the text area and scan the QR code for a simplified version.
+Save Receipt: The detailed receipt will be saved as a text file in the project directory.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Technologies Used
+Python: The core programming language used for development.
+Tkinter: A standard GUI library for Python.
+qrcode: A Python library for generating QR codes.
+Pillow (PIL): A Python Imaging Library (PIL Fork) that adds image processing capabilities.
+datetime: A module for working with dates and times.
+math: A module providing mathematical functions.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Acknowledgments
+Special thanks to the developers and the community behind Python and the used libraries for providing the tools to create this application. Enjoy using the Egg Production Calculator!
+Feel free to reach out with any questions or feedback!
+
+Happy calculating! 🥚📈
