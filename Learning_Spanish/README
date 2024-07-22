@@ -1,16 +1,19 @@
 README - Spanish Learning App
-
+--------------------------------------------------------------------------------------------------------------------------------
 Inleiding
+
 De Spanish Learning App is een Python-toepassing die gebruikers helpt hun Spaanse taalvaardigheden te verbeteren door middel van interactieve quizzen. Deze applicatie maakt gebruik van de Kivy-bibliotheek om een boeiende en gebruiksvriendelijke interface te bieden voor het leren van Spaanse woordenschat en zinsvertalingen.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
 Functies
+
 Woordenquiz: Test je kennis van Spaanse woordenschat door Engelse woorden naar Spaans te vertalen.
 Zinsvertaling: Oefen met het vertalen van Spaanse zinnen naar het Engels met meerkeuzeopties.
 Speciale Karakters: Voeg gemakkelijk Spaanse karakters toe aan je antwoorden via een handig dropdown-menu.
 Voortgangsbewaking: Houd bij hoeveel vragen je correct of incorrect hebt beantwoord.
 Navigatie: Keer eenvoudig terug naar het hoofdmenu vanuit elke quiz.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
 Hoe te Gebruiken
+
 Installeer Python: Zorg ervoor dat Python op uw systeem is geïnstalleerd.
 Kloon de Repository: Kloon deze repository naar uw lokale machine.
 Navigeer naar de Projectdirectory: Open een terminal en navigeer naar de projectdirectory.
@@ -21,31 +24,36 @@ python main.py
 Selecteer een Quiz: Kies tussen de Woordenquiz en Zinsvertaling om te beginnen met oefenen.
 Gebruik Speciale Karakters: Klik op de knop 'Spaanse Karakters' om Spaanse karakters aan je antwoord toe te voegen.
 Beantwoord Vragen: Typ je antwoord in het invoerveld en klik op 'Submit' om je antwoord te controleren.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
 Gebruikte Technologieën
+
 Python: De kernprogrammeertaal die is gebruikt voor ontwikkeling.
 Kivy: Een open-source Python bibliotheek voor het ontwikkelen van multitouch-applicaties.
 random: Python-bibliotheek voor het genereren van willekeurige elementen, gebruikt voor het randomiseren van quizvragen.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
 Nawoord
 Dank aan de ontwikkelaars en de community achter Python en Kivy voor het verstrekken van de tools om deze leerapplicatie te creëren. Geniet van het leren en verbeteren van je Spaanse taalvaardigheden!
-
+--------------------------------------------------------------------------------------------------------------------------------
 Neem gerust contact met me op bij vragen of feedback! Veel plezier met het leren van Spaans! 📚
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+================================================================================================================================
 
 README - Spanish Learning App
-
+--------------------------------------------------------------------------------------------------------------------------------
 Introduction
+
 The Spanish Learning App is a Python application designed to help users improve their Spanish language skills through interactive quizzes. Utilizing the Kivy library, this application provides an engaging and user-friendly interface for learning Spanish vocabulary and sentence translations.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
 Features
+
 Word Quiz: Test your knowledge of Spanish vocabulary by translating English words to Spanish.
 Sentence Translation: Practice translating Spanish sentences into English with multiple-choice options.
 Special Characters: Easily add Spanish characters to your answers via a convenient dropdown menu.
 Progress Tracking: Keep track of how many questions you've answered correctly or incorrectly.
 Navigation: Easily return to the main menu from any quiz.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
 How to Run
+
 Install Python: Ensure you have Python installed on your system.
 Clone Repository: Clone this repository to your local machine.
 Navigate to Directory: Open a terminal and navigate to the project directory.
@@ -56,13 +64,15 @@ python main.py
 Select a Quiz: Choose between the Word Quiz and Sentence Translation to start practicing.
 Use Special Characters: Click the 'Spanish Characters' button to add Spanish characters to your answer.
 Answer Questions: Type your answer in the input field and click 'Submit' to check your answer.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
 Technologies Used
+
 Python: The core programming language used for development.
 Kivy: An open-source Python library for developing multitouch applications.
 random: Python library for generating random elements, used for randomizing quiz questions.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
 Acknowledgments
-Special thanks to the developers and community behind Python and Kivy for providing the tools to create this learning application. Enjoy learning and improving your Spanish language skills!
 
+Special thanks to the developers and community behind Python and Kivy for providing the tools to create this learning application. Enjoy learning and improving your Spanish language skills!
+--------------------------------------------------------------------------------------------------------------------------------
 Feel free to reach out with any questions or feedback! Have fun learning Spanish! 📚
