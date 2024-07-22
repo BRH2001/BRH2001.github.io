@@ -1,7 +1,8 @@
 README - Bouncing ball game
 --------------------------------------------------------------------------------------------------------------------------------
 Inleiding
-Welkom bij de Pygame Brick Breaker! Dit project is een eenvoudig maar boeiend brick breaker-spel, gebouwd met behulp van de Pygame-bibliotheek. Het spel omvat het besturen van een paddle om een bal te laten stuiteren en bakstenen te breken. Het spel bevat functies zoals een hoofdmenu, pauzemenu, game over-scherm en score bijhouden.
+Welkom bij de Pygame Brick Breaker! Dit project is een eenvoudig maar boeiend brick breaker-spel, gebouwd met behulp van de Pygame-bibliotheek. 
+Het spel omvat het besturen van een paddle om een bal te laten stuiteren en bakstenen te breken. Het spel bevat functies zoals een hoofdmenu, pauzemenu, game over-scherm en score bijhouden.
 --------------------------------------------------------------------------------------------------------------------------------
 Functies
 Interactieve Visualisaties: Bekijk het bakstenen breken in real-time met visuele representaties.
@@ -38,7 +39,8 @@ Veel plezier met het spelen van Pygame Brick Breaker! 🎮🧱
 README - Bouncing ball game (English)
 --------------------------------------------------------------------------------------------------------------------------------
 Introduction
-Welcome to the Pygame Brick Breaker! This project is a simple yet engaging brick breaker game built using the Pygame library. The game involves controlling a paddle to bounce a ball and break bricks. It includes features like a main menu, pause menu, game over screen, and score tracking.
+Welcome to the Pygame Brick Breaker! This project is a simple yet engaging brick breaker game built using the Pygame library. 
+The game involves controlling a paddle to bounce a ball and break bricks. It includes features like a main menu, pause menu, game over screen, and score tracking.
 --------------------------------------------------------------------------------------------------------------------------------
 Features
 Interactive Visualizations: Watch the brick-breaking process in real-time with visual representations.
