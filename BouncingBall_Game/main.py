@@ -8,7 +8,7 @@ pygame.init()
 # Screen dimensions
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
-FPS = 60
+FPS = 66
 
 # Colors
 LIGHT_GREEN = (144, 238, 144)
@@ -20,18 +20,18 @@ WHITE = (255, 255, 255)
 
 # Brick dimensions
 BRICK_ROWS = 6
-BRICK_COLS = 11
+BRICK_COLS = 12
 BRICK_WIDTH = SCREEN_WIDTH // BRICK_COLS
-BRICK_HEIGHT = 30
+BRICK_HEIGHT = 33
 
 # Paddle dimensions
-PADDLE_WIDTH = SCREEN_WIDTH // 8
+PADDLE_WIDTH = SCREEN_WIDTH // 9
 PADDLE_HEIGHT = 20
 PADDLE_SPEED = 12
 
 # Ball dimensions
-BALL_RADIUS = 10
-BALL_INITIAL_SPEED = 5
+BALL_RADIUS = 9
+BALL_INITIAL_SPEED = 6
 
 # Set up the display
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
