@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Library of Lost Time</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: #0f0f1e;
+      color: #e0e0ff;
+      font-family: 'Courier New', monospace;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Hide all story divs by default */
+    div[id] {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      box-sizing: border-box;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    /* Show targeted div */
+    div:target {
+      opacity: 1;
+      pointer-events: auto;
+      z-index: 10;
+    }
+
+    /* Show #start by default */
+    #start {
+      opacity: 1;
+      pointer-events: auto;
+      z-index: 10;
+    }
+
+    /* Hide #start if ANY other div is targeted */
+    :target:not(#controller) ~ #start {
+      opacity: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Invisible controller to help manage state */
+    #controller {
+      display: none;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      line-height: 1.6;
+      max-width: 800px;
+      margin-bottom: 2rem;
+      text-shadow: 0 0 10px rgba(160, 160, 255, 0.4);
+    }
+
+    a {
+      color: #a0a0ff;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      margin: 0.5rem;
+      border: 1px solid #a0a0ff;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      display: inline-block;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    a:hover {
+      background: #a0a0ff;
+      color: #0f0f1e;
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(160, 160, 255, 0.8);
+    }
+
+    strong {
+      color: #ff9999;
+      font-weight: bold;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, transparent 20%, #0f0f1e 100%);
+      z-index: -1;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- STORY SCREENS (except #start) -->
+  <div id="explore">
+    <h1>You wander down Aisle ∞.<br>The books whisper as you pass.<br>One spine glows faintly: <em>“Your Life, Unwritten.”</em></h1>
+    <a href="#take-book">Take it.</a> |
+    <a href="#ignore-book">Ignore it.</a> |
+    <a href="#start">Go back.</a>
+  </div>
+
+  <div id="take-book">
+    <h1>As you open it, the pages rearrange themselves.<br>It’s writing itself — in your handwriting.<br>“Today, I will...”</h1>
+    <a href="#write-brave">Write: “...become fearless.”</a> |
+    <a href="#write-rich">Write: “...become rich.”</a> |
+    <a href="#write-loved">Write: “...become loved.”</a>
+  </div>
+
+  <div id="write-brave">
+    <h1>Your skin tingles. Shadows shrink from you.<br>You feel invincible — until you notice<br>everyone around you is now afraid of you.</h1>
+    <a href="#brave-lonely">Embrace solitude.</a> |
+    <a href="#undo-brave">Try to undo it.</a>
+  </div>
+
+  <div id="brave-lonely">
+    <h1>You become a legend — untouchable, revered, alone.<br>Statues are built. Songs are sung.<br>No one dares speak to you. Ever again.</h1>
+    <a href="#start">A hollow victory. <strong>Try again?</strong></a>
+  </div>
+
+  <div id="undo-brave">
+    <h1>You scribble over the page: “Never mind!”<br>The book shudders. Reality glitches.<br>You wake up… back at the start.</h1>
+    <a href="#start">Back to square one. <strong>Again?</strong></a>
+  </div>
+
+  <div id="write-rich">
+    <h1>Gold coins clink into your pockets.<br>Stock tickers scream your name.<br>But every coin you touch… ages you.</h1>
+    <a href="#rich-old">Spend it all now.</a> |
+    <a href="#rich-save">Try to save it.</a>
+  </div>
+
+  <div id="rich-old">
+    <h1>You buy mansions, rockets, islands.<br>By sunset, your hair is white. Your hands, wrinkled.<br>You die on a throne of gold… at age 27.</h1>
+    <a href="#start">Wealth is time. <strong>Play again?</strong></a>
+  </div>
+
+  <div id="rich-save">
+    <h1>You lock the coins in a vault.<br>Each night, you hear them ticking like clocks.<br>One morning, the vault is empty — and so is your future.</h1>
+    <a href="#start">Greed eats time. <strong>Restart?</strong></a>
+  </div>
+
+  <div id="write-loved">
+    <h1>Doors open. Arms embrace you. Smiles bloom like flowers.<br>But the love feels… scripted. Everyone says the same lines.<br>You realize: you wrote their dialogue too.</h1>
+    <a href="#loved-puppet">Enjoy the performance.</a> |
+    <a href="#loved-free">Set them free.</a>
+  </div>
+
+  <div id="loved-puppet">
+    <h1>You live in a perfect sitcom.<br>Laughter on cue. Hugs on schedule.<br>Years pass. No one changes. No one grows.<br>You forget what real love feels like.</h1>
+    <a href="#start">A gilded cage. <strong>Again?</strong></a>
+  </div>
+
+  <div id="loved-free">
+    <h1>You tear out the page. The book screams.<br>People blink — truly blink — for the first time.<br>Some walk away. Some stay. It’s messy. It’s real.</h1>
+    <a href="#true-end">This is enough.</a>
+  </div>
+
+  <div id="true-end">
+    <h1>You close the book. It vanishes.<br>The library reshapes around you — smaller, warmer.<br>A new title appears on a shelf: <em>“Your Life, Being Written.”</em></h1>
+    <a href="#start">The story continues… <strong>Start anew?</strong></a>
+  </div>
+
+  <div id="ignore-book">
+    <h1>You walk away. The glow fades.<br>But now every book you pass whispers your name.<br>You can’t unhear them.</h1>
+    <a href="#madness">Keep walking.</a> |
+    <a href="#return-book">Go back for it.</a>
+  </div>
+
+  <div id="madness">
+    <h1>The whispers become screams.<br>The shelves twist into labyrinths.<br>You run for hours — or years?<br>Eventually, you become a whisper too.</h1>
+    <a href="#start">Lost in the stacks. <strong>Try again?</strong></a>
+  </div>
+
+  <div id="return-book">
+    <h1>You sprint back — but the book is gone.<br>In its place: a mirror. Your reflection winks.<br>“Should’ve taken the deal,” it says.</h1>
+    <a href="#start">Too late now. <strong>Restart?</strong></a>
+  </div>
+
+  <!-- 📖 OPEN A BOOK — NOW LEADS TO COSMIC HORROR -->
+  <div id="read">
+    <h1>You grab a random book: <em>“Yesterday’s Tomorrow.”</em><br>As you read, your memories rewrite themselves.<br>You remember a childhood… that never happened.</h1>
+    <a href="#false-memory">Keep reading.</a> |
+    <a href="#close-book">Slam it shut.</a>
+  </div>
+
+  <div id="false-memory">
+    <h1>You grow up on Mars. You marry a robot. You pilot comets.<br>The memories are vivid, beautiful, false.<br>When you finish the book, you forget your real name.</h1>
+    <a href="#memory-collapse">Turn the last page.</a>
+  </div>
+
+  <div id="memory-collapse">
+    <h1>The book snaps shut. Your body flickers.<br>You look down — your hands are ink.<br>You’re not reading a story. You’re inside one.</h1>
+    <a href="#become-fiction">Accept your fate.</a>
+  </div>
+
+  <div id="become-fiction">
+    <h1>You feel yourself being written.<br>A reader, somewhere, turns your page.<br>You speak their name — and they hear you.<br>You are no longer real. You are beloved fiction.</h1>
+    <a href="#start">Trapped in print. <strong>Read again?</strong></a>
+  </div>
+
+  <div id="close-book">
+    <h1>You hurl the book away. It bursts into blue flames.<br>A voice sighs: “Wise choice.”<br>The Librarian steps from the smoke.</h1>
+    <a href="#librarian-deal">Listen.</a>
+  </div>
+
+  <!-- 👤 ASK THE LIBRARIAN — NOW HAS UNIQUE CONTRACT OUTCOMES -->
+  <div id="ask">
+    <h1>The Librarian is tall, faceless, made of parchment.<br>“Lost?” it rustles. “Everyone is.<br>Pick a path. Or I’ll pick one for you.”</h1>
+    <a href="#librarian-deal">Accept its offer.</a> |
+    <a href="#defy-librarian">Defy it.</a>
+  </div>
+
+  <div id="librarian-deal">
+    <h1>It hands you a quill. “Sign in blood or ink.<br>One chapter rewritten. One regret erased.”<br>The contract glows ominously.</h1>
+    <a href="#sign-blood">Sign in blood.</a> |
+    <a href="#sign-ink">Sign in ink.</a>
+  </div>
+
+  <div id="sign-blood">
+    <h1>The page drinks your blood.<br>Your greatest regret vanishes — and so does the joy tied to it.<br>You feel lighter… and emptier.</h1>
+    <a href="#soul-archive">Let it take you.</a>
+  </div>
+
+  <div id="soul-archive">
+    <h1>Your body dissolves into parchment.<br>You feel yourself bound, spine cracked, placed gently on a shelf.<br>Future visitors will read your life — and weep.<br>You are now Exhibit #7,341: “The One Who Bargained.”</h1>
+    <a href="#start">Forever archived. <strong>Browse again?</strong></a>
+  </div>
+
+  <div id="sign-ink">
+    <h1>The ink fades as you write.<br>“Clever,” chuckles the Librarian. “No sacrifice, no change.”<br>Suddenly, your fingers twitch uncontrollably — you begin writing… in the air.</h1>
+    <a href="#ink-curse">What are you writing?</a>
+  </div>
+
+  <div id="ink-curse">
+    <h1>You’re writing everyone’s fate.<br>The barista drops her cup. You wrote that.<br>A child laughs. You scripted that.<br>You try to stop — but the quill is in your soul now.</h1>
+    <a href="#start">Cursed scribe. <strong>Write again?</strong></a>
+  </div>
+
+  <div id="defy-librarian">
+    <h1>You tear the contract. The library shakes.<br>“How… novel,” it whispers.<br>For the first time in eternity, the Librarian smiles.<br>“You may leave. Or stay. Your choice. Truly.”</h1>
+    <a href="#leave-library">Leave.</a> |
+    <a href="#stay-library">Stay.</a>
+  </div>
+
+  <div id="leave-library">
+    <h1>You walk out the door — into your own bedroom.<br>Was it a dream? On your desk: a single book.<br>Its title: <em>“Return When Ready.”</em></h1>
+    <a href="#start">The library waits. <strong>Go back?</strong></a>
+  </div>
+
+  <div id="stay-library">
+    <h1>You sit at the Librarian’s desk. It bows and fades.<br>The shelves hum. The clocks still.<br>You are the new Keeper of Lost Time.<br>Endless stories. Endless choices. All yours.</h1>
+    <a href="#start">The next visitor arrives… <strong>Play again?</strong></a>
+  </div>
+
+  <!-- 🛏️ SLEEP — NOW HAS ASCENSION OR COMA REVEAL -->
+  <div id="sleep">
+    <h1>You curl up between History and Heartbreak.<br>Dreams flood in — not yours, but everyone’s.<br>You see births, wars, first kisses, last breaths.</h1>
+    <a href="#dream-weaver">Absorb the dreams.</a> |
+    <a href="#wake-screaming">Wake up screaming.</a>
+  </div>
+
+  <div id="dream-weaver">
+    <h1>You learn to weave dreams into reality.<br>Give someone hope? It blooms in their world.<br>Give someone fear? It hunts them.<br>You become a god of slumber.</h1>
+    <a href="#dream-god">Claim your throne.</a>
+  </div>
+
+  <div id="dream-god">
+    <h1>You ascend beyond flesh.<br>Mortals whisper your name before sleep.<br>You shape their nights — kind or cruel, it’s your choice.<br>The Library? Just your antechamber now.</h1>
+    <a href="#start">God of Dreams. <strong>Dream again?</strong></a>
+  </div>
+
+  <div id="wake-screaming">
+    <h1>You jolt awake — but the library is gone.<br>You’re in a white room. Doctors murmur.<br>“Catatonic for 7 years,” one says.<br>The library… was it escape? Or prison?</h1>
+    <a href="#coma-patient">Ask the doctor.</a>
+  </div>
+
+  <div id="coma-patient">
+    <h1>“Who am I?” you whisper.<br>The doctor hesitates. “You’re Patient Zero.<br>The Library Project… it was an experiment to map consciousness.<br>You never woke up. Until now.”<br>You smile. “Then take me back.”</h1>
+    <a href="#start">Reality is optional. <strong>Return?</strong></a>
+  </div>
+
+  <!-- Controller must come BEFORE #start for the CSS rule to work -->
+  <div id="controller"></div>
+
+  <!-- START SCREEN — NOW AT THE BOTTOM -->
+  <div id="start">
+    <h1>You wake up inside a library you’ve never seen before.<br>Shelves spiral into infinity. Clocks tick backwards.<br>What do you do?</h1>
+    <a href="#explore">Explore the aisles.</a> |
+    <a href="#read">Open a book.</a> |
+    <a href="#ask">Ask the Librarian.</a> |
+    <a href="#sleep">Nap between the shelves.</a>
+  </div>
+
+</body>
+</html>
