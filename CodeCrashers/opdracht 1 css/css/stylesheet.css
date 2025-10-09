@@ -1,0 +1,32 @@
+/* Opdracht 2.1 & 2.2 & 2.3 - Kleurcodes */
+body {
+    /* Opdracht 2.2: khaki omgezet naar HSL */
+    background-color: hsl(54, 38%, 75%); /* khaki in HSL */
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    /* Opdracht 2.1: rood omgezet naar RGB */
+    color: rgb(255, 0, 0); /* rood in RGB */
+    font-size: 2em;
+}
+
+h2 {
+    /* Opdracht 2.1: oranje omgezet naar RGBA */
+    color: rgba(255, 165, 0, 1); /* oranje in RGBA (alpha = 1 = volledig dekking) */
+    font-size: 1.5em;
+}
+
+p {
+    /* Opdracht 2.1: groen omgezet naar hexadecimaal */
+    color: #008000; /* groen in hex */
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+/* Opdracht 2.3: blauw omgezet naar HSLA */
+p:nth-of-type(2) {
+    color: hsla(240, 100%, 50%, 1); /* blauw in HSLA (alpha = 1 = volledig dekking) */
+}
